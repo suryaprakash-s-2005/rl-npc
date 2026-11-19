@@ -1,0 +1,885 @@
+{
+  "config": {
+    "seed": 11,
+    "env": {
+      "world_size": 20.0,
+      "dt": 0.1,
+      "npc_max_speed": 3.0,
+      "npc_sensor_range": 20.0,
+      "episode_len": 400,
+      "catch_dist": 0.8,
+      "player_cfg": {
+        "aggression": 0.6,
+        "evasion_distance": 0.0,
+        "clinging": 0.0
+      }
+    },
+    "strategy": {
+      "params": {
+        "aggressive": [
+          0.95,
+          0.05,
+          0.0,
+          1.0,
+          1.2
+        ],
+        "defensive": [
+          0.1,
+          0.85,
+          0.6,
+          0.7,
+          16.0
+        ],
+        "evasive": [
+          0.35,
+          0.25,
+          1.6,
+          1.3,
+          5.0
+        ],
+        "balanced": [
+          0.65,
+          0.3,
+          0.3,
+          1.0,
+          2.2
+        ]
+      },
+      "labels": [
+        "aggressive",
+        "defensive",
+        "evasive",
+        "balanced"
+      ],
+      "feature_window": 15,
+      "dt": 0.1
+    },
+    "detector": {
+      "hidden_sizes": [
+        64,
+        64
+      ],
+      "epochs": 60,
+      "lr": 0.001,
+      "batch_size": 128,
+      "context_len": 8,
+      "rollout_episodes_per_strategy": 40,
+      "rollout_episode_len": 200,
+      "model_path": "data/detector.pt"
+    },
+    "transitions": {
+      "cusum_k": 0.5,
+      "cusum_h": 6.0,
+      "min_segment": 10,
+      "confirm": 10,
+      "score_smoothing": 4
+    },
+    "rl": {
+      "algorithm": "dqn",
+      "hidden_sizes": [
+        128,
+        128
+      ],
+      "lr": 0.0005,
+      "gamma": 0.99,
+      "tau": 0.005,
+      "target_update_freq": 500,
+      "buffer_capacity": 50000,
+      "batch_size": 64,
+      "epsilon_start": 1.0,
+      "epsilon_end": 0.05,
+      "epsilon_decay_steps": 20000,
+      "replay": "single",
+      "prior_power": 1.6,
+      "stale_decay": 0.5,
+      "episodes": 60,
+      "switch_every": 40,
+      "eval_switch_every": 60,
+      "strategy_source": "detector"
+    }
+  },
+  "history": [
+    {
+      "episode": 0,
+      "label": "aggressive",
+      "reward": 21.20375638617736,
+      "caught": 1,
+      "steps": 13,
+      "transitions": 0
+    },
+    {
+      "episode": 1,
+      "label": "aggressive",
+      "reward": 52.93406215948425,
+      "caught": 1,
+      "steps": 54,
+      "transitions": 1
+    },
+    {
+      "episode": 2,
+      "label": "aggressive",
+      "reward": 44.12294979483234,
+      "caught": 1,
+      "steps": 43,
+      "transitions": 0
+    },
+    {
+      "episode": 3,
+      "label": "aggressive",
+      "reward": 42.194670518959434,
+      "caught": 1,
+      "steps": 40,
+      "transitions": 0
+    },
+    {
+      "episode": 4,
+      "label": "aggressive",
+      "reward": 17.209018915378778,
+      "caught": 1,
+      "steps": 14,
+      "transitions": 0
+    },
+    {
+      "episode": 5,
+      "label": "aggressive",
+      "reward": 40.86941764660126,
+      "caught": 1,
+      "steps": 45,
+      "transitions": 1
+    },
+    {
+      "episode": 6,
+      "label": "aggressive",
+      "reward": 63.915850959942,
+      "caught": 1,
+      "steps": 62,
+      "transitions": 1
+    },
+    {
+      "episode": 7,
+      "label": "aggressive",
+      "reward": 15.748087415943997,
+      "caught": 1,
+      "steps": 7,
+      "transitions": 0
+    },
+    {
+      "episode": 8,
+      "label": "aggressive",
+      "reward": 16.469225436643697,
+      "caught": 1,
+      "steps": 10,
+      "transitions": 0
+    },
+    {
+      "episode": 9,
+      "label": "aggressive",
+      "reward": 53.75418250082359,
+      "caught": 1,
+      "steps": 70,
+      "transitions": 1
+    },
+    {
+      "episode": 10,
+      "label": "aggressive",
+      "reward": 33.46114111155947,
+      "caught": 1,
+      "steps": 31,
+      "transitions": 0
+    },
+    {
+      "episode": 11,
+      "label": "aggressive",
+      "reward": 45.41540806069271,
+      "caught": 1,
+      "steps": 53,
+      "transitions": 0
+    },
+    {
+      "episode": 12,
+      "label": "aggressive",
+      "reward": 21.1156651043974,
+      "caught": 1,
+      "steps": 12,
+      "transitions": 0
+    },
+    {
+      "episode": 13,
+      "label": "aggressive",
+      "reward": 32.58582261523071,
+      "caught": 1,
+      "steps": 24,
+      "transitions": 0
+    },
+    {
+      "episode": 14,
+      "label": "aggressive",
+      "reward": 39.5556410273146,
+      "caught": 1,
+      "steps": 28,
+      "transitions": 0
+    },
+    {
+      "episode": 15,
+      "label": "aggressive",
+      "reward": 23.032148995918135,
+      "caught": 1,
+      "steps": 12,
+      "transitions": 0
+    },
+    {
+      "episode": 16,
+      "label": "aggressive",
+      "reward": 31.67018066262406,
+      "caught": 1,
+      "steps": 31,
+      "transitions": 0
+    },
+    {
+      "episode": 17,
+      "label": "aggressive",
+      "reward": 15.982754345527507,
+      "caught": 1,
+      "steps": 7,
+      "transitions": 0
+    },
+    {
+      "episode": 18,
+      "label": "aggressive",
+      "reward": 53.46161987378911,
+      "caught": 1,
+      "steps": 52,
+      "transitions": 1
+    },
+    {
+      "episode": 19,
+      "label": "aggressive",
+      "reward": 16.312553408747064,
+      "caught": 1,
+      "steps": 6,
+      "transitions": 0
+    },
+    {
+      "episode": 20,
+      "label": "aggressive",
+      "reward": 14.273469151281127,
+      "caught": 1,
+      "steps": 10,
+      "transitions": 0
+    },
+    {
+      "episode": 21,
+      "label": "aggressive",
+      "reward": 17.265338257949935,
+      "caught": 1,
+      "steps": 12,
+      "transitions": 0
+    },
+    {
+      "episode": 22,
+      "label": "aggressive",
+      "reward": 18.298758593513202,
+      "caught": 1,
+      "steps": 16,
+      "transitions": 0
+    },
+    {
+      "episode": 23,
+      "label": "aggressive",
+      "reward": 57.665302726086445,
+      "caught": 1,
+      "steps": 65,
+      "transitions": 1
+    },
+    {
+      "episode": 24,
+      "label": "aggressive",
+      "reward": 22.87168215867419,
+      "caught": 1,
+      "steps": 19,
+      "transitions": 0
+    },
+    {
+      "episode": 25,
+      "label": "aggressive",
+      "reward": 27.214291682385333,
+      "caught": 1,
+      "steps": 26,
+      "transitions": 0
+    },
+    {
+      "episode": 26,
+      "label": "aggressive",
+      "reward": 37.57283310858695,
+      "caught": 1,
+      "steps": 36,
+      "transitions": 0
+    },
+    {
+      "episode": 27,
+      "label": "aggressive",
+      "reward": 53.14393403036469,
+      "caught": 1,
+      "steps": 48,
+      "transitions": 1
+    },
+    {
+      "episode": 28,
+      "label": "aggressive",
+      "reward": 56.26980075066749,
+      "caught": 1,
+      "steps": 58,
+      "transitions": 1
+    },
+    {
+      "episode": 29,
+      "label": "aggressive",
+      "reward": 40.9757345091529,
+      "caught": 1,
+      "steps": 35,
+      "transitions": 0
+    },
+    {
+      "episode": 30,
+      "label": "aggressive",
+      "reward": 36.747275842279954,
+      "caught": 1,
+      "steps": 35,
+      "transitions": 0
+    },
+    {
+      "episode": 31,
+      "label": "aggressive",
+      "reward": 36.05550580583065,
+      "caught": 1,
+      "steps": 33,
+      "transitions": 0
+    },
+    {
+      "episode": 32,
+      "label": "aggressive",
+      "reward": 41.52850255480956,
+      "caught": 1,
+      "steps": 43,
+      "transitions": 0
+    },
+    {
+      "episode": 33,
+      "label": "aggressive",
+      "reward": 46.2373104875138,
+      "caught": 1,
+      "steps": 45,
+      "transitions": 0
+    },
+    {
+      "episode": 34,
+      "label": "aggressive",
+      "reward": 33.02345310674616,
+      "caught": 1,
+      "steps": 27,
+      "transitions": 0
+    },
+    {
+      "episode": 35,
+      "label": "aggressive",
+      "reward": 19.141236794025417,
+      "caught": 1,
+      "steps": 12,
+      "transitions": 0
+    },
+    {
+      "episode": 36,
+      "label": "aggressive",
+      "reward": 25.706097257379618,
+      "caught": 1,
+      "steps": 14,
+      "transitions": 0
+    },
+    {
+      "episode": 37,
+      "label": "aggressive",
+      "reward": 16.220510541902566,
+      "caught": 1,
+      "steps": 10,
+      "transitions": 0
+    },
+    {
+      "episode": 38,
+      "label": "aggressive",
+      "reward": 43.422498714404675,
+      "caught": 1,
+      "steps": 43,
+      "transitions": 0
+    },
+    {
+      "episode": 39,
+      "label": "aggressive",
+      "reward": 41.27377211039335,
+      "caught": 1,
+      "steps": 38,
+      "transitions": 0
+    },
+    {
+      "episode": 40,
+      "label": "defensive",
+      "reward": -20.746619798108306,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 41,
+      "label": "defensive",
+      "reward": -39.281584610914486,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 42,
+      "label": "defensive",
+      "reward": -61.52575859768244,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 43,
+      "label": "defensive",
+      "reward": -44.29299440788306,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 44,
+      "label": "defensive",
+      "reward": -43.08656707052199,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 45,
+      "label": "defensive",
+      "reward": -57.21349360678012,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 1
+    },
+    {
+      "episode": 46,
+      "label": "defensive",
+      "reward": -63.40635502921697,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 1
+    },
+    {
+      "episode": 47,
+      "label": "defensive",
+      "reward": -45.85942995032958,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 48,
+      "label": "defensive",
+      "reward": -24.094901109241977,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 49,
+      "label": "defensive",
+      "reward": -73.74610701986578,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 1
+    },
+    {
+      "episode": 50,
+      "label": "defensive",
+      "reward": -34.21782482994352,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 51,
+      "label": "defensive",
+      "reward": -38.412840304089194,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 52,
+      "label": "defensive",
+      "reward": -64.48400886563151,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 1
+    },
+    {
+      "episode": 53,
+      "label": "defensive",
+      "reward": -53.847056337085995,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 54,
+      "label": "defensive",
+      "reward": -67.75611919882311,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 55,
+      "label": "defensive",
+      "reward": -40.78422522636532,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 56,
+      "label": "defensive",
+      "reward": -56.10371454875384,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 1
+    },
+    {
+      "episode": 57,
+      "label": "defensive",
+      "reward": -28.18056289093923,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 58,
+      "label": "defensive",
+      "reward": -25.963073314258413,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    },
+    {
+      "episode": 59,
+      "label": "defensive",
+      "reward": -5.162416415714997,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0
+    }
+  ],
+  "episode_flags": [
+    {
+      "episode": 0,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 1,
+      "switch_to": "aggressive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 2,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 3,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 4,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 5,
+      "switch_to": "aggressive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 6,
+      "switch_to": "aggressive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 7,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 8,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 9,
+      "switch_to": "aggressive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 10,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 11,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 12,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 13,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 14,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 15,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 16,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 17,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 18,
+      "switch_to": "aggressive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 19,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 20,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 21,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 22,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 23,
+      "switch_to": "aggressive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 24,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 25,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 26,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 27,
+      "switch_to": "aggressive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 28,
+      "switch_to": "aggressive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 29,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 30,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 31,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 32,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 33,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 34,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 35,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 36,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 37,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 38,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 39,
+      "switch_to": "aggressive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 40,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 41,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 42,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 43,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 44,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 45,
+      "switch_to": "defensive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 46,
+      "switch_to": "defensive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 47,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 48,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 49,
+      "switch_to": "defensive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 50,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 51,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 52,
+      "switch_to": "defensive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 53,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 54,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 55,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 56,
+      "switch_to": "defensive",
+      "n_transitions": 1
+    },
+    {
+      "episode": 57,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 58,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    },
+    {
+      "episode": 59,
+      "switch_to": "defensive",
+      "n_transitions": 0
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+OVERLEAF INSTRUCTIONS FOR CONFERENCE ORGANIZERS
+Paper 1323 - Auditing Strategy-Conditioned Experience Replay for Reinforcement Learning Non-Player Characters: A Pre-Registered Negative Result
+
+The ZIP contains the complete LaTeX source, figures, and a compiled reference PDF.
+
+1. Upload the ZIP to Overleaf:
+   - Log in to Overleaf.
+   - Choose "New Project" > "Upload Project".
+   - Select "1323_overleaf.zip" and upload it.
+
+2. Open the project and confirm the main file:
+   - Main document: main.tex
+   - Figures folder: figures/
+
+3. Select the compiler:
+   - Recommended: XeLaTeX (this matches the included compiled PDF).
+   - Alternative: pdfLaTeX also works because the source is plain ASCII.
+
+4. Click "Recompile".
+   - The output PDF should be 6 pages and include 4 figures, 3 tables, and 27 references.
+   - Citation numbers in the text are clickable and jump to the corresponding reference entry.
+   - Overleaf will create its own output PDF; the included main.pdf is a reference copy from the same source.
+
+5. Download the generated PDF if needed.
+
+Included files:
+- main.tex
+- main.pdf (compiled reference copy, 6 pages)
+- figures/fig2_calibration.png
+- figures/fig3_effects.png
+- figures/fig4_collapse.png
+- figures/p2_x171.png
+- OVERLEAF_INSTRUCTIONS.txt

@@ -1,0 +1,136 @@
+{
+  "rows": [
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "single",
+      "seed": 0,
+      "win_rate": 0.5833333333333334,
+      "adapt_time": 17.166666666666668,
+      "mean_reward": 279.6917799467993,
+      "transitions_detected": 0,
+      "train_time": 275.8495638370514
+    },
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "single",
+      "seed": 1,
+      "win_rate": 0.3333333333333333,
+      "adapt_time": 48.5,
+      "mean_reward": 284.0853104394226,
+      "transitions_detected": 0,
+      "train_time": 279.6980938911438
+    },
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "single",
+      "seed": 2,
+      "win_rate": 1.0,
+      "adapt_time": 31.833333333333332,
+      "mean_reward": 365.0217100029843,
+      "transitions_detected": 0,
+      "train_time": 217.6210367679596
+    },
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 0,
+      "win_rate": 1.0,
+      "adapt_time": 54.0,
+      "mean_reward": 360.1855486825381,
+      "transitions_detected": 0,
+      "train_time": 245.78076195716858
+    },
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 1,
+      "win_rate": 0.8333333333333334,
+      "adapt_time": 28.166666666666668,
+      "mean_reward": 285.7891610993492,
+      "transitions_detected": 0,
+      "train_time": 217.10660243034363
+    },
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 2,
+      "win_rate": 1.0,
+      "adapt_time": 17.166666666666668,
+      "mean_reward": 347.9206120773512,
+      "transitions_detected": 0,
+      "train_time": 283.3585956096649
+    },
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "single",
+      "seed": 3,
+      "win_rate": 1.0,
+      "adapt_time": 31.5,
+      "mean_reward": 350.56667017931176,
+      "transitions_detected": 0,
+      "train_time": 105.56956481933594
+    },
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "single",
+      "seed": 4,
+      "win_rate": 0.9166666666666666,
+      "adapt_time": 19.0,
+      "mean_reward": 312.26123204103516,
+      "transitions_detected": 0,
+      "train_time": 143.60651326179504
+    },
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "single",
+      "seed": 5,
+      "win_rate": 0.4166666666666667,
+      "adapt_time": 19.083333333333332,
+      "mean_reward": 215.81586696251622,
+      "transitions_detected": 0,
+      "train_time": 158.00648474693298
+    },
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 3,
+      "win_rate": 0.9166666666666666,
+      "adapt_time": 9.416666666666666,
+      "mean_reward": 350.49106428298546,
+      "transitions_detected": 0,
+      "train_time": 132.99233484268188
+    },
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 4,
+      "win_rate": 1.0,
+      "adapt_time": 27.0,
+      "mean_reward": 374.35647707132125,
+      "transitions_detected": 0,
+      "train_time": 188.65856552124023
+    },
+    {
+      "tagging": "gt",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 5,
+      "win_rate": 1.0,
+      "adapt_time": 25.0,
+      "mean_reward": 365.70143752560784,
+      "transitions_detected": 0,
+      "train_time": 197.87870287895203
+    }
+  ]
+}

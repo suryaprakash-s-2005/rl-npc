@@ -1,0 +1,674 @@
+
+===== PAGE 1 =====
+Auditing Strategy-Conditioned Experience Replay
+for Reinforcement Learning Non-Player Characters:
+A Pre-Registered Negative Result
+N. P. Rajeswari
+Department of Computer Science
+and Engineering
+Velammal College of Engineering
+and Technology, Madurai, India
+greatnpr@gmail.com
+Shiveshwar S.
+Department of Computer Science
+and Engineering
+Velammal College of Engineering
+and Technology, Madurai, India
+23cseb52.shiveshwar.s@gmail.com
+Surya Prakash S.
+Department of Computer Science
+and Engineering
+Velammal College of Engineering
+and Technology, Madurai, India
+suryaprakashsbe@gmail.com
+Abstract—Adaptive strategy-conditioned experience replay—
+tagging transitions with the detected play style and sampling from
+the matching partition—has been reported to lift the win rate
+of reinforcement learning (RL) non-player characters (NPCs) by
++0.25 in a 2-D combat arena. We audit that claim. Surviving
+checkpoints reproduce the direction but not the magnitude (∆=
++0.18), and the single-buffer baseline is not reproducible. Rebuilt
+with explicit seeding, per-episode records, and a pre-registered
+protocol, we calibrate away saturation and run a 36-cell grid
+at six paired seeds; the effect is absent (offline −0.069, p=0.25;
+online +0.056, p=0.625; median paired difference 0.000). We
+report four measured defects: replay capacity is not the controlled
+variable its ablation assumes; the oracle-label condition contains
+a training-collapse mode with a critic value-scale signature; the
+switch point lies beyond the reachable horizon (0/24 episodes);
+and the deployed classifier is calibrated to the wrong opponent
+(0.836 →0.306), whose retraining raises window-level accuracy
+(0.267 →0.802) but not the effect. We release the testbed, pre-
+registered audit protocol, and reporting checklist— reproducible
+evaluation as sustainable computing.
+Index Terms—reinforcement learning, non-player character,
+reproducibility, experience replay, evaluation protocol, sustain-
+able computing, negative results
+I. INTRODUCTION
+Non-player characters (NPCs) make a game world feel
+inhabited, yet most are driven by hand-written rule tables or
+finite-state machines: deterministic controllers a player soon
+learns to predict and exploit [1]. Reinforcement learning (RL)
+replaces those rules with behaviour learned from interaction
+[2]–[4].
+We call this the strategy-transition problem: infer which
+style the player uses now from delayed, noisy telemetry, detect
+when it changes, and adjust play quickly.
+Experience replay [4], [5] is the standard reuse mechanism
+in deep RL, but a uniform buffer mixes experience from
+every strategy and time period, which motivates the strategy-
+conditioned partitioned replay we audit: tag every transition
+with the active strategy, store it in that strategy’s partition,
+and sample preferentially from the partition matching the
+currently detected strategy, damped by a parameter-similarity
+prior. Earlier work by the present authors (no citable venue)
+reported the scheme lifts adaptive win rate from 0.708 to
+0.958 in the most demanding condition (labels withheld), with
+unchanged adaptation time; we audit that claim here. The
+audited system is re-specified in Section III rather than cited.
+This paper audits that result and reports that it does
+not survive. The defects that make such results fragile—
+an unreproducible baseline, a saturated task, an evaluation
+horizon the episodes never reach, a classifier calibrated to the
+wrong opponent—recur across game-AI RL evaluations and
+are detectable from published artifacts alone; an undetected
+defect also wastes the re-training it triggers, making repro-
+ducible evaluation a sustainability practice [18], [25]–[27].
+Contribution 1: a specified system. We design and release
+a testbed for mid-encounter strategy adaptation: a symmetric
+combat environment with domain-randomized personalities, a
+temporal strategy classifier, a confirm-gated change detector,
+and a replay memory partitioning transitions by the active
+strategy with a parameter-similarity sampling prior; its re-
+ported benefit is not established.
+Contribution 2: an audit of what the system can support.
+The originally claimed +0.25 is not recovered from the surviv-
+ing checkpoints (∆= +0.18), and the single-buffer baseline is
+not reproducible from a fixed checkpoint: its sampling indices
+shared an environment RNG stream, so five repeats of one
+checkpoint span a win-rate range of 0.75 while the parti-
+tioned arm is exactly reproducible. Under the rebuilt protocol
+(explicit seeding, per-episode records) the 36-cell grid at six
+paired seeds shows no effect at a calibrated difficulty: offline
+−0.069 (p=0.25), online +0.056 (p=0.625), median paired
+difference exactly 0.000. Four further transferable defects,
+each measured rather than asserted, follow in Section V, with
+a reporting checklist to close.
+II. RELATED WORK
+Rule-based NPCs are deterministic and exploitable, moti-
+vating learned controllers [1], [2]; constrained RL specifies
+behaviour directly [3], Unity is a common platform [9], and
+adaptation has been pursued through companion learning [7],
+
+===== PAGE 2 =====
+Fig. 1.
+The audited pipeline. Transitions pass through a sliding feature
+window to a strategy classifier; a confirm-gated CUSUM detector reports
+transitions, which enter the active strategy’s partition and are sampled with
+a similarity prior. Under cond-on the oracle strategy label is appended to
+the policy input; under cond-off it is withheld. The dashed arrow is action
+feedback from the agent to the arena.
+policies for changing design parameters [10], Unity ML-
+Agents NPCs [8], human-strategy learning [14], and multi-
+agent experience sharing [12], [13]; none of these focuses on
+mid-encounter change. Dynamic difficulty adjustment adapts
+challenge to player skill [11]; we study the harder case:
+the target behaviour is unknown, changes without warning,
+and must be inferred from dynamics alone. Prioritized [15]
+and hindsight [16] replay reweight experience by novelty or
+goal relevance; our partitioned memory is a regime-indexed
+middle ground. CUSUM [6] underlies our two-stage detector.
+Reproducibility problems in RL are well documented [18],
+[19]; reported progress is sensitive to seeds and code de-
+tails [20], and benchmark comparisons need variance-aware
+intervals [21]–[23]. Value-based agents are prone to instability
+and overestimation [17], [24], so we inspect the critic’s internal
+scale and report a negative result with a reusable checklist.
+III. THE STRATEGY-CONDITIONED REPLAY SYSTEM
+This section specifies our system.
+A. Environment and Combat Model
+We use a symmetric combat arena, 20 × 20 units, in which
+the NPC wins by reducing the player’s health to zero while
+keeping its own above zero (∆t = 0.1 s, episodes capped at
+400 steps). The action space is |A| = 18 (nine movement
+intents × {move, attack}) and the base observation is 14-
+dimensional (relative pose, closing rate, healths, cooldowns,
+speeds, swing-in-range). cond-on appends a 4-dimensional
+one-hot of the active strategy label; cond-off withholds it, so
+the agent must infer the strategy from dynamics. Combat is
+melee: a hit within attack_range=1.6 inside a 70◦half-
+angle cone deals 2 damage, one hit-stun step, on a 4-step
+cooldown (contact below 0.5 units ignores the cone). Each
+actor has 20 HP as shipped; Section IV raises only the player’s
+to 60—the rationale that 20 HP makes a mid-episode switch
+observable is contradicted by measurement (Finding F6).
+B. Player Strategy Model
+A strategy is an 8-tuple (aggression, retreat rate, eva-
+sion distance, speed, engagement distance, attack frequency,
+attack range, low-health retreat threshold). Four canonical
+personalities—aggressive, defensive, evasive, and balanced—
+are defined, and each episode’s parameters are perturbed by
+multiplicative domain randomization (±20%).
+C. Strategy Transition Detection
+Temporal strategy classifier. Each step contributes 10
+telemetry features over a sliding window of W=15 steps,
+fed to a temporal MLP (two 64-unit ReLU layers; 8-window
+context; 4-class softmax) trained on 29,920 windows (7,480
+per strategy) synthesized against a random-walk opponent.
+Confirm-gated CUSUM detector. A two-stage CUSUM
+runs on a binary change indicator It = [ˆyt̸ = ˆyseg] with
+statistic St = max(0, St−1 + It −k), where k=0.5, alarm
+threshold h=6.0, and minimum segment length 10 steps; when
+St ≥h a candidate change is armed and confirmed if the
+new label persists confirm=10 steps. Classifier scores are
+exponentially smoothed (α=0.2) before the argmax, and the
+statistic decays to zero when the label is stable.
+Implementation note. In the audited code the confirmation
+stage gates nothing: the confirmed label filters no training
+labels, chooses no partition, and triggers no reprioritization—
+transitions are routed by the smoothed argmax label at inser-
+tion time.
+D. Strategy-Aware Partitioned Replay Memory
+Each transition (o, a, r, o′, d) is inserted into the partition
+indexed by the active strategy label. At sampling time, with
+batch size B and detected strategy c, partition j receives
+weight wj(c)=1 if j=c, δ s p
+cj if j̸ = c and |Pj| > 0, and 0 if
+|Pj| = 0, where scj is the cosine similarity of the canonical
+strategy parameters, δ=0.5 the stale-decay floor, and p=1.6
+the prior power; the buffer normalizes the weights, draws
+(n1, . . . , n4)
+∼
+Multinomial(B, p1, . . . , p4), and samples
+min(nj, |Pj|) from each partition, topping up from the current
+one.
+E. The RL Agent
+The NPC is a Double DQN [17] (two 128-unit hidden lay-
+ers; Adam η=5×10−4, gradient-norm clipped at 10; γ=0.99;
+soft target τ=0.005 with a 500-step hard sync; batches of 256
+every 2 steps; ϵ=0.4 →0.02 over 15,000 steps), pre-filled
+with 30 expert demonstrations per strategy. Rewards: +150
+(kill), −50 (death), ±8 per hit, +0.6 heading, +1.2 per unit
+closure, +1.0 in range, −0.005 per step.
+Training runs 400 episodes under a within-episode-switch
+protocol: each episode starts under one personality and
+switches once to its cyclic partner (aggressive↔defensive,
+evasive↔balanced), so the policy must track a transi-
+tion.
+The
+switch
+is
+at
+switch_step=100
+originally,
+switch_step=40 in our corrected protocol (Section IV).
+IV. AUDIT PROTOCOL
+A. What We Could Reuse, and What We Could Not
+The audit began from the original repository. The per-
+episode evaluation records had been discarded, and the legacy
+run naming scheme encoded neither the conditioning flag
+
+===== PAGE 3 =====
+nor the episode count, so distinct configurations overwrote
+one another’s checkpoints: the original ground-truth/cond-
+on and all detector-labelled checkpoints are unrecoverable.
+With no source-control history we cannot say which revision
+produced any surviving number, so the checkpoints are treated
+as candidates, re-evaluated under an explicit protocol rather
+than assumed provenance.
+B. Reproduction Infrastructure
+Four infrastructure changes were required before any new
+number could be trusted.
+Explicit seeding. Python, NumPy, and PyTorch RNGs are
+seeded per run; the single-buffer implementation had drawn
+sampling indices from the global environment stream and
+now has a dedicated one; determinism is verified by exact
+reproduction of training curves and statistics. Collision-free
+run naming. Every run’s tag encodes replay variant, label
+source, conditioning flag, episode count, seed, and a UTC
+timestamp. Per-episode records. Every evaluation episode is
+written to disk with its win/loss outcome, length, adaptation
+status, and detected-transition count; aggregate-only reporting
+is what allowed the original result to be misread. A corrected
+adaptation metric. The original metric is silent about episodes
+ending before the switch—at the original setting the majority
+of them (F6). We set the switch to step 40, which 862 of 864
+evaluation episodes reach, and report four mutually exclusive
+statuses—ok, censored, no-post, short-base— averaging only
+ok and censored and reporting the excluded counts, following
+the preference for standard reproductions over novel variants.
+C. Pre-Registration and the Deciding Run
+The protocol for the deciding run was written to a file before
+launch and is amended only in the open. The design is a 36-cell
+grid: two conditions (ground-truth labels, conditioned on/off)
+× three replay arms (single buffer at 200,000, partitioned, and
+a single buffer at 50,000) × six paired seeds, at 400 training
+and 12 evaluation episodes per cell. The two single-buffer arms
+test whether matched total capacity is what matters: a pre-
+registration committed to reporting a null or negative outcome
+regardless of direction.
+D. Task Calibration
+The first full grid at the original difficulty showed the
+evaluation task was saturated: the frozen policy won every
+offline evaluation fight in both arms. A second confound
+is excluded—the opponent was caught in 0.89 of training
+episodes across the twelve original ground-truth runs, so this
+is task balance rather than training budget: the opponent is a
+trained controller and the NPC player is a scripted heuristic.
+Player HP is the correct knob: symmetric combat damage
+changes fight length without shifting win balance, and HP
+affects only the player. We swept it and selected 60, the lowest
+swept value that moved the offline win rate off the ceiling and
+gave the adaptation metric non-degenerate range (Fig. 2).
+Fig. 2.
+Offline win rate against player HP: at HP 20 the task is saturated
+(1.000 in both arms) and the metric cannot separate them.
+TABLE I
+FIVE REPEATS OF ONE FIXED CHECKPOINT UNDER ONE FIXED PROTOCOL;
+NOTHING RETRAINED, NO REPETITION DISCARDED. PER-REPETITION
+EPISODE LOGS WERE NOT RETAINED; THESE RATES COME FROM THE
+ORIGINAL MANUSCRIPT—INTERNALLY CONSISTENT BUT NOT
+RE-DERIVABLE HERE.
+Replay
+Seed
+Win rates (5 repeats)
+Mean
+Range
+single
+0
+.833 .833 .917 .917 1.00
+0.900
+0.167
+single
+3
+.417 .667 .250 .417 1.00
+0.550
+0.750
+partitioned
+0
+.917 .917 .917 .917 .917
+0.917
+0.000
+partitioned
+3
+1.00 1.00 1.00 1.00 1.00
+1.000
+0.000
+V. FINDINGS
+A. F1: The Baseline Was Not Reproducible
+We re-evaluated the surviving single-buffer checkpoints
+under a fixed protocol (12 episodes per seed, online evaluation,
+6 seeds, the original 20 HP and switch_step=40). The
+originally claimed numbers are 0.708 (single) and 0.958
+(partitioned), a difference of +0.25. Re-evaluation gives 0.764
+and 0.944, a difference of +0.18. The direction survives,
+the magnitude does not. These per-seed records are the
+−seed<N> files in our artifact tree; the originally reported
+switch_step=100 protocol is not among them, so the
+comparison is against the originally claimed numbers, not a
+like-for-like replay.
+The two arms do not share a noise floor: five repeats of the
+same evaluation of the same checkpoint (Table I) leave the
+partitioned arm bit-for-bit reproducible while the single-buffer
+arm’s win rate moves by as much as 0.75. Those runs are
+not among our artifacts; their rates are retained as the printed
+record.
+The cause is an implementation asymmetry, not a property
+of the methods: single-buffer sampling drew indices from
+a global RNG stream shared with the environment, while
+partitioned replay’s per-partition storage incidentally isolated
+its sampling. The baseline is thus the noisy arm: the claimed
++0.25 is one draw from a distribution whose per-seed standard
+deviation reaches 0.29, compared against a zero-variance arm.
+B. F2: The Evaluation Task Was Saturated
+At the original difficulty the offline win rate is 1.000 for
+both arms (n=6 paired seeds) and adaptation time is equally
+degenerate: as the median of the six per-seed means, the two
+
+===== PAGE 4 =====
+TABLE II
+DECIDING RUN AT PLAYER HP 60. PAIRED PER-SEED DIFFERENCES
+(PARTITIONED −SINGLE), n=6 PAIRED SEEDS PER ROW; COND-ON ROWS
+ARE CONTAMINATED BY THE F5 TRAINING COLLAPSE, SHOWN FOR
+COMPLETENESS ONLY.
+Cond.
+Metric
+Single
+Part.
+∆
+95% CI
+p
+off
+offline
+0.917
+0.847
+−0.069
+[−0.139, +0.014] 0.250
+off
+online
+0.667
+0.722
++0.056
+[−0.125, +0.250] 0.625
+on
+offline
+0.806
+0.694
+−0.111
+[−0.222, −0.014] 0.188
+on
+online
+0.583
+0.528
+−0.056
+[−0.222, +0.083] 0.750
+Fig. 3. Deciding-run paired effect sizes with exact 95% bootstrap intervals
+and exact signed-rank p values; no row separates from zero.
+arms sit at 2.1 and 0.9 steps (per-seed mean maximum of
+6.2 steps, all far inside one second of simulated time), while
+per episode the medians are 1.0 for both arms and the per-
+episode maxima are 23 and 15 steps, with 5 of 72 single-arm
+episodes and 6 of 72 partitioned episodes excluded for too
+short a pre-switch baseline window. The only variance source
+in the original protocol was online continual evaluation, where
+the agent is still learning during the measurement—a property
+of the protocol, not the scheme (Fig. 2).
+C. F3: At a Calibrated Difficulty the Effect Is Absent
+Table II reports paired per-seed differences with exact 95%
+bootstrap intervals and exact two-sided Wilcoxon signed-rank
+tests, both by enumeration rather than sampling: the interval
+enumerates all 66=46,656 paired resamples and the test all
+2k sign assignments of the k nonzero differences (midranks
+for tied magnitudes, exact zeros dropped), so neither needs an
+RNG.
+The deployment-relevant condition without the training
+pathology is cond-off, where the NPC must infer the switch
+from dynamics. There the offline difference is −0.069 and the
+online difference is +0.056, neither distinguishable from zero,
+and the median paired online difference is exactly 0.000—
+the mean is carried by one or two seeds moving in opposite
+directions (Fig. 3).
+Adaptation time does not favour partitioned replay either:
+the median of the six per-seed means is 1.0 step for the
+single arm and 1.5 for the partitioned arm offline, and the
+sign reverses under the per-episode aggregation (0.5 versus
+Fig. 4. Training catch rate in 50-episode blocks: cond-on, seed 5, all three
+arms (heavy) never learn; the partitioned arm never exceeds 0.06, single-
+buffer arms recover only to 0.50/0.20. The failure is an interaction between
+the oracle-label condition and one seed, not a replay effect.
+1.0), so we claim no effect. The online effect did shrink when
+the ceiling was removed, from +0.181 to +0.056, consistent
+with the ceiling explanation: with no headroom the only
+variance source is the disruption of learning during evaluation,
+and a partitioned buffer is somewhat more robust to it—a
+plausible mechanism, not a demonstrated one. Neither value
+is distinguishable from zero.
+D. F4: Replay Capacity Is Not the Controlled Variable
+Partitioned replay is often credited for its larger effective
+capacity, so the grid includes a single buffer with one quarter
+of the capacity. At the calibrated difficulty this arm moves
+the metrics by about as much as the treatment: reducing
+single-buffer capacity from 200,000 to 50,000 changes of-
+fline win rate by −0.056 (p=0.50) and online win rate by
++0.125 (p=0.25), against partitioning differences of −0.069
+and +0.056. At the saturated difficulty the two single-buffer
+arms were identical, which is what made capacity look inert.
+Neither manipulation then produces a reliable difference, and
+the two are of the same magnitude, so a capacity ablation
+controls for it only if that effect is measured.
+E. F5: The Oracle-Label Condition Contains a Training-
+Collapse Mode
+The one row of Table II whose interval excludes zero is
+the cond-on offline row, an artifact: its exact signed-rank test
+(p=0.188) does not exclude zero. Fig. 4 plots training catch
+rate in 50-episode blocks: on cond-on seed 5, all three replay
+arms fail to learn the task. Catch rate is at most 0.02 in the first
+block, the partitioned arm never exceeds 0.06 in any block,
+and the two single-buffer arms recover only partially, ending
+at 0.50 and 0.20 against 0.84–0.96 for healthy runs.
+This is neither a late-training collapse nor a replay effect:
+cond-off seed 5 is healthy (0.86–0.92 final catch rate) and
+cond-on seed 0 is healthy (0.84–0.96), so the −0.111 cond-on
+difference is driven by a training failure, not by replay.
+We re-trained all three arms of the failing cell from scratch;
+they reproduced the archived training curve exactly, block for
+
+===== PAGE 5 =====
+block. Six control cells (cond-off seed 5, cond-on seed 0, all
+three arms) also reproduced exactly, so for these nine cells
+the collapse is a property of the configuration-seed pair, not
+run-to-run variation.
+The failure has a clear critic signature on a log scale:
+instrumenting the critic on the same nine cells (loss, mean
+and maximum absolute online Q-value, TD-target magnitude,
+gradient norm at every update; no random numbers drawn;
+all 9 cells match block for block against the archived curves)
+describes the collapse rather than causing it. In the three failing
+arms the mean |Q| is already 4,650–10,025 in the first block
+and grows to 7.7 × 104–8.9 × 105 by the last, loss peaking
+near 1.3×105; in the six healthy cells the mean |Q| stays 53–
+59 in the first block and never exceeds 458, and no healthy
+episode’s |Q| exceeds 580 at any point. On the failing arms the
+mean |Q| passes 1,000 by episode 22–28, before any catch: a
+value-scale divergence of the critic rather than a policy-only
+failure, matching the pre-registered suspect—the “Cond-on”
+one-hot, which changes instantaneously at a switch, unlike the
+other 14 features. We tested two interventions. Regularizing
+the critic (Adam weight decay 10−4) does not prevent the
+divergence: mean |Q| still reaches 8.1 × 104–2.2 × 105. Re-
+moving the oracle one-hot from the state—same 18-dim width,
+partitioned sampling unchanged—does prevent the partitioned
+collapse (last-block mean |Q| 8.9 × 105 →467, loss peak
+1.3 × 105 →20, catch recovering to 0.94), but both single-
+buffer arms still diverge: the oracle signal is necessary for the
+partitioned collapse yet not the sole cause of the single-buffer
+one. The mechanism is real but partial.
+F. F6: The Switch Point Lies Outside the Reachable Episode
+Horizon
+The protocol switches the opponent’s personality at step 100
+of a 400-step episode, on the rationale that 20 HP makes the
+switch observable before the fight ends; measuring episode
+length contradicts this. Against the deployed opponent (a
+competent chaser) mean episode length is 51.2 steps and the
+longest observed is 78; against the random-walk opponent
+used for classifier training, mean length is 323.2 and 20 of
+24 episodes reach step 100.
+No episode reaches the switch, so the mid-episode transition
+the method is designed around does not occur. We bound the
+effect rather than measure it: in our re-run at the original HP,
+675 of 864 evaluation episodes ended before step 100, and at
+the calibrated HP 60 it was 82 of 864. switch_step=40
+raises switch-reachability to 862 of 864 evaluation episodes.
+G. F7: The Deployed Classifier Is Calibrated to the Wrong
+Opponent
+The strategy classifier reaches 0.927 validation accuracy on
+the random-walk opponent that generated its training data,
+with per-class recall 0.942/0.832/0.979/0.953—an accuracy
+that holds only in-distribution. Over 24 held-out episodes
+per opponent, pre-switch label accuracy is 0.836 against the
+random-walk opponent and falls to 0.306 against the com-
+petent chaser the NPC is deployed against, with medians of
+0.969 and 0.043—the latter below the 0.25 chance rate of a
+four-way problem: label collapse, not mere degradation. Both
+values are recomputed from the saved checkpoint and per-
+episode records, so the gap is reproducible though the training
+run’s own log does not survive.
+Any result attributed to the detection pipeline—including
+the original detector-labelled rows—inherits this error. We
+close the loop by retraining the classifier on the compe-
+tent chaser and re-running all 36 detector-labelled cells: no
+cell moves significantly (exact signed-rank p ≥0.375)—
+partitioned replay still fails to help. The retrain is only a
+local repair: on held-out windows competent-chaser accuracy
+rises 0.267 →0.802, but under the episode-level protocol it
+recovers only 0.306 →0.441, and random-walk accuracy col-
+lapses 0.836 →0.250 (chance)—the classifier specialises to
+the deployment opponent. Report accuracy where the module
+is deployed, not where it was trained.
+VI. DISCUSSION AND REPORTING RECOMMENDATIONS
+A. What the Audit Changes About the Claim
+The claim does not survive: partitioned replay does not
+measurably improve adaptation to a mid-encounter switch
+here, at either difficulty, with the label withheld or supplied—
+the effect is smaller than its baseline’s measurement noise.
+What this does not show: one environment, one architecture,
+six seeds, one switch per episode; partitioning might help
+in regimes we did not test (more frequent switching, longer
+horizons, weaker or more diverse opponents).
+B. A Reporting Checklist
+Each of the four infrastructure changes in Section IV was
+necessary for at least one finding; we recommend seven items
+for RL evaluations reporting a between-method difference.
+Report the noise floor of your metric: evaluate one fixed
+checkpoint repeatedly and publish the spread; if it approaches
+the effect, the effect is not established (F1). Seed the baseline
+as carefully as the treatment;a dedicated RNG stream per
+subsystem avoids asymmetric noise between arms. Verify the
+manipulated event occurs: publish the fraction of evaluation
+episodes in which the switch, spawn, or trigger you study
+actually happened (F6, much of F5). Check your task is not
+saturated; a win rate at 1.000 cannot distinguish methods—
+sweep difficulty and report the sweep. Validate perception
+modules in deployment; report classifier accuracy against the
+opponent the agent faces, not the one that generated its training
+data (F7). Measure the variable you ablate; if an ablation
+“controls for” capacity, report the capacity effect explicitly
+rather than assuming it negligible (F4). Keep per-episode
+records; aggregate tables conceal censoring, early termination,
+and the difference between a median of zero and a mean of
+0.056.
+C. Reproducibility and Artifacts
+Every number is checked against the raw records by a script;
+plotted values are decoded from the figures and re-derived. We
+release the audited system (environment, classifier, detector,
+
+===== PAGE 6 =====
+replay memory, agent), the pre-registered protocol, run-naming
+scheme, record schema, per-figure audit table, and reporting
+checklist—the audit can be repeated and the defects sought
+elsewhere. The source compiles under IEEEtran within the
+six-page limit.
+D. Limitations
+Our audit has the same weaknesses it criticizes: six seeds
+per cell is few, so confidence intervals are wide and our
+null result is a failure to detect an effect, not proof of its
+absence. We localized the F5 collapse in the partitioned arm
+to the oracle one-hot—removing it (same state width) restores
+the partitioned arm to catch 0.94, while critic weight decay
+does not—but the single-buffer divergence stays unexplained
+and catch is already near zero before the divergence onset,
+so cause and consequence cannot be separated. One origi-
+nal configuration (ground-truth/cond-on) could not be re-run
+(checkpoints overwritten), so F5 is characterized only where
+artifacts survive; the Table I repeats and the 0.915 detector
+log are gone—all reported as records rather than regenerable
+evidence. Finally, the HP search was ours: the sweep is
+reported in full and the selection rule was fixed before the
+deciding run, but HP is itself a researcher degree of freedom
+a future replication should vary.
+VII. CONCLUSION AND FUTURE WORK
+Strategy-conditioned partitioned experience replay is a rea-
+sonable idea for NPCs facing a player who changes style mid-
+encounter, but its reported +0.25 does not survive audit: it
+is not recovered from the surviving checkpoints, is smaller
+than its baseline’s own noise, and vanishes once the task
+is calibrated away from saturation—the one comparison that
+separated from zero is a training-collapse artifact that hit every
+arm.
+The durable contributions are the released testbed and the
+failure analysis: an unreproducible baseline, a saturated metric,
+an event that never occurs, and a classifier calibrated to the
+wrong opponent are ordinary outcomes of small-sweep RL
+work, each cheap to detect with the checklist (Section VI).
+Future work: re-test the method where partitioning matters,
+with the noise floor measured first.
+REFERENCES
+[1] M. S. Ayoub, R. Tehseen, U. Omer, M. M. Awan, and R. Javaid,
+“Enhancing non-player characters (NPC) behaviour in video games using
+reinforcement learning,” Int. J. of Innovations in Science & Technology,
+vol. 7, no. 2, pp. 966–985, 2025, doi:10.33411/ijist/202572966985.
+[2] I. Borovikov, J. Harder, M. Sadovsky, and A. Beirami, “Towards interac-
+tive training of non-player characters in video games,” arXiv:1906.00535,
+2019.
+[3] J. Roy, R. Girgis, J. Romoff, P.-L. Bacon, and C. J. Pal, “Direct behavior
+specification via constrained reinforcement learning,” in Proc. ICML,
+2022, pp. 18828–18843.
+[4] V. Mnih, K. Kavukcuoglu, D. Silver, A. A. Rusu, J. Veness, M. G. Belle-
+mare, et al., “Human-level control through deep reinforcement learning,”
+Nature, vol. 518, no. 7540, pp. 529–533, 2015.
+[5] L.-J. Lin, “Self-improving reactive agents based on reinforcement learn-
+ing, planning and teaching,” Machine Learning, vol. 8, no. 3–4, pp. 293–
+321, 1992.
+[6] E. S. Page, “Continuous inspection schemes,” Biometrika, vol. 41, no. 1/2,
+pp. 100–115, 1954.
+[7] A. A. Sharifi, R. Zhao, and D. Szafron, “Learning companion behaviors
+using reinforcement learning in games,” in Proc. AIIDE, vol. 6, no. 1,
+pp. 69–75, 2010, doi:10.1609/aiide.v6i1.12392.
+[8] V. Raj, A. T. S., M. Maanas, A. K. P., and R. P. D., “Implementation of
+a reinforcement learning-based adaptive NPC in a semi-open world 3D
+game environment,” Int. J. for Research in Applied Science & Engineering
+Technology (IJRASET), vol. 14, no. V, pp. 4054–4059, 2026.
+[9] A. Juliani, V.-P. Berges, E. Teng, A. Cohen, J. Harper, C. Elion, C. Goy,
+Y. Gao, H. Henry, M. Mattar, and D. Lange, “Unity: A general platform
+for intelligent agents,” arXiv:1809.02627, 2018.
+[10] A. Sestini, A. Kuhnle, and A. D. Bagdanov, “Deep policy networks for
+NPC behaviors that adapt to changing design parameters in Roguelike
+games,” in Proc. AAAI-21 Workshop on Reinforcement Learning in
+Games, 2021, arXiv:2012.03532.
+[11] T. Zheng, “Dynamic difficulty adjustment using deep reinforcement
+learning: a review,” Applied and Computational Engineering, vol. 71,
+no. 1, pp. 157–162, 2024.
+[12] R. Hare and Y. Tang, “Hierarchical deep reinforcement learning with
+experience sharing for metaverse in education,” IEEE Trans. on Sys-
+tems, Man, and Cybernetics: Systems, vol. 53, pp. 2047–2055, 2023,
+doi:10.1109/TSMC.2022.3227919.
+[13] R. Hare and Y. Tang, “Reinforcement learning with experience sharing
+for intelligent educational systems,” in Proc. IEEE SMC, 2023, pp. 1431–
+1436.
+[14] S. Lee, G. Lee, W. Kim, J. Kim, J. Park, and K. Cho, “Human
+strategy learning-based multi-agent deep reinforcement learning for online
+team sports game,” IEEE Access, vol. 13, pp. 15437–15452, 2025,
+doi:10.1109/ACCESS.2025.3531435.
+[15] T. Schaul, J. Quan, I. Antonoglou, and D. Silver, “Prioritized experience
+replay,” in Proc. ICLR, 2016.
+[16] M. Andrychowicz, F. Wolski, A. Ray, J. Schneider, R. Fong, P. Welinder,
+B. McGrew, J. Tobin, P. Abbeel, and W. Zaremba, “Hindsight experience
+replay,” in Proc. ICLR, 2017.
+[17] H. van Hasselt, A. Guez, and D. Silver, “Deep reinforcement learning
+with double Q-learning,” in Proc. AAAI, 2016, pp. 4970–4981.
+[18] J. Pineau, P. Vincent-Lamarre, K. Sinha, V. Larivi`ere, A. Beygelzimer,
+F. d’Alch´e-Buc, E. Fox, and H. Larochelle, “Improving reproducibility
+in machine learning research,” J. Mach. Learn. Res., vol. 22, no. 164,
+pp. 1–20, 2021.
+[19] M. Hutson, “Artificial intelligence faces reproducibility crisis,” Science,
+vol. 359, no. 6377, pp. 725–726, 2018.
+[20] P. Henderson, R. Islam, P. Bachman, J. Pineau, D. Precup, and
+D. Meger, “Deep reinforcement learning that matters,” in Proc. AAAI,
+2018, pp. 3207–3214.
+[21] X. Bouthillier, P. Delaunay, M. Bronzi, et al., “Accounting for variance
+in machine learning benchmarks,” in Proc. MLSys, 2021.
+[22] R. Agarwal, M. Schwarzer, P. S. Castro, A. Courville, and M. G. Belle-
+mare, “Deep reinforcement learning at the edge of the statistical
+precipice,” in Advances in NeurIPS, 2021.
+[23] J. Dodge, S. Gururangan, D. Card, R. Schwartz, and N. A. Smith, “Show
+your work: improved reporting of experimental results,” in Proc. EMNLP,
+2019, pp. 2185–2194.
+[24] S. Fujimoto, H. van Hoof, and D. Meger, “Addressing function approx-
+imation error in actor-critic methods,” in Proc. ICML, 2018, pp. 1587–
+1596.
+[25] E. Strubell, A. Ganesh, and A. McCallum, “Energy and policy consid-
+erations for deep learning in NLP,” in Proc. ACL, 2019, pp. 3645–3650.
+[26] R. Schwartz, J. Dodge, N. A. Smith, and O. Etzioni, “Green AI,”
+Commun. ACM, vol. 63, no. 12, pp. 54–63, 2020.
+[27] D.
+Patterson,
+J.
+Gonzalez,
+Q.
+Le,
+C.
+Liang,
+L.-M.
+Munguia,
+D. Rothchild, D. R. So, M. Texier, and J. Dean, “Carbon emissions and
+large neural network training,” arXiv:2104.10350, 2021.

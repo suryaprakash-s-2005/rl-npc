@@ -1,0 +1,77 @@
+{
+  "rows": [
+    {
+      "tagging": "det",
+      "variant": "single",
+      "seed": 0,
+      "mean_reward": 28.63424738416699,
+      "win_rate": 0.9,
+      "adapt_time": 23.75
+    },
+    {
+      "tagging": "det",
+      "variant": "single",
+      "seed": 2,
+      "mean_reward": 17.81186677736209,
+      "win_rate": 0.65,
+      "adapt_time": 12.15
+    },
+    {
+      "tagging": "det",
+      "variant": "single",
+      "seed": 4,
+      "mean_reward": 31.477180030205908,
+      "win_rate": 0.9,
+      "adapt_time": 23.4
+    },
+    {
+      "tagging": "det",
+      "variant": "partitioned",
+      "seed": 0,
+      "mean_reward": 31.281017281636746,
+      "win_rate": 0.95,
+      "adapt_time": 37.35
+    },
+    {
+      "tagging": "det",
+      "variant": "partitioned",
+      "seed": 2,
+      "mean_reward": 27.52397351435733,
+      "win_rate": 0.9,
+      "adapt_time": 21.25
+    },
+    {
+      "tagging": "det",
+      "variant": "partitioned",
+      "seed": 4,
+      "mean_reward": 34.597798333476,
+      "win_rate": 0.95,
+      "adapt_time": 26.25
+    },
+    {
+      "tagging": "det",
+      "variant": "partitioned_noprior",
+      "seed": 0,
+      "mean_reward": 22.859670706072418,
+      "win_rate": 0.65,
+      "adapt_time": 19.0
+    },
+    {
+      "tagging": "det",
+      "variant": "partitioned_noprior",
+      "seed": 2,
+      "mean_reward": 26.136993402280932,
+      "win_rate": 0.9,
+      "adapt_time": 23.2
+    },
+    {
+      "tagging": "det",
+      "variant": "partitioned_noprior",
+      "seed": 4,
+      "mean_reward": 32.0491789426462,
+      "win_rate": 0.85,
+      "adapt_time": 28.35
+    }
+  ],
+  "tagging": "det"
+}

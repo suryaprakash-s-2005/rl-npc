@@ -1,0 +1,24 @@
+{
+  "rows": [
+    {
+      "tagging": "gt",
+      "cond": false,
+      "variant": "single",
+      "seed": 0,
+      "mean_reward": 330.57800083491674,
+      "win_rate": 0.9,
+      "adapt_time": 40.5
+    },
+    {
+      "tagging": "gt",
+      "cond": false,
+      "variant": "partitioned",
+      "seed": 0,
+      "mean_reward": 345.5733863415693,
+      "win_rate": 1.0,
+      "adapt_time": 20.9
+    }
+  ],
+  "tagging": "gt",
+  "cond": false
+}

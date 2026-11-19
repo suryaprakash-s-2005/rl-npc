@@ -1,0 +1,64 @@
+{
+  "rows": [
+    {
+      "hp": 20,
+      "seed": 0,
+      "arm": "single200k",
+      "tag": "cal-hp20-single200k-seed0",
+      "offline_win_rate": 1.0,
+      "offline_adapt_mean": 3.909090909090909,
+      "offline_adapt_median": 2.0,
+      "switch_reached": 11,
+      "eval_episodes": 12,
+      "n_no_post": 1,
+      "n_short_base": 0,
+      "n_censored": 0,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\cal-hp20-single200k-seed0.pt"
+    },
+    {
+      "hp": 40,
+      "seed": 0,
+      "arm": "single200k",
+      "tag": "cal-hp40-single200k-seed0",
+      "offline_win_rate": 0.9166666666666666,
+      "offline_adapt_mean": 4.416666666666667,
+      "offline_adapt_median": 0.0,
+      "switch_reached": 12,
+      "eval_episodes": 12,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "n_censored": 0,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\cal-hp40-single200k-seed0.pt"
+    },
+    {
+      "hp": 60,
+      "seed": 0,
+      "arm": "single200k",
+      "tag": "cal-hp60-single200k-seed0",
+      "offline_win_rate": 0.75,
+      "offline_adapt_mean": 14.666666666666666,
+      "offline_adapt_median": 1.5,
+      "switch_reached": 12,
+      "eval_episodes": 12,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "n_censored": 0,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\cal-hp60-single200k-seed0.pt"
+    },
+    {
+      "hp": 80,
+      "seed": 0,
+      "arm": "single200k",
+      "tag": "cal-hp80-single200k-seed0",
+      "offline_win_rate": 0.75,
+      "offline_adapt_mean": 4.833333333333333,
+      "offline_adapt_median": 0.0,
+      "switch_reached": 12,
+      "eval_episodes": 12,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "n_censored": 0,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\cal-hp80-single200k-seed0.pt"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "detector": "hp60-randomwalk",
+  "dataset_size": 29920,
+  "validation_accuracy": 0.9712566844919787,
+  "per_class_recall": {
+    "aggressive": 0.9621109607577808,
+    "defensive": 0.9783491204330176,
+    "evasive": 0.973462783171521,
+    "balanced": 0.9710047201618341
+  },
+  "model_path": "D:\\IEEE\\project3\\data\\audit\\detector_hp60_randomwalk.pt"
+}

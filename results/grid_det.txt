@@ -1,0 +1,33 @@
+seeded 3571 expert transitions
+ep   0 aggressive reward= -15.1 caught=0 steps=  59 trans=0
+ep  10 aggressive reward= -50.7 caught=0 steps=  40 trans=0
+ep  20 aggressive reward= -18.9 caught=0 steps=  33 trans=0
+ep  30 aggressive reward= -24.0 caught=0 steps=  47 trans=0
+ep  40 defensive reward=   7.8 caught=0 steps= 400 trans=0
+ep  50 defensive reward=  41.9 caught=0 steps= 400 trans=0
+ep  60 defensive reward= 136.0 caught=1 steps= 298 trans=0
+ep  70 defensive reward= 128.4 caught=1 steps= 186 trans=0
+ep  80 evasive   reward=  26.9 caught=0 steps= 400 trans=0
+ep  90 evasive   reward= 138.2 caught=1 steps= 163 trans=0
+ep 100 evasive   reward= 125.7 caught=1 steps= 155 trans=0
+ep 110 evasive   reward= 114.7 caught=1 steps=  87 trans=0
+ep 120 balanced  reward= -69.3 caught=0 steps= 400 trans=0
+ep 130 balanced  reward= 101.1 caught=1 steps= 255 trans=0
+ep 140 balanced  reward= -39.6 caught=0 steps= 400 trans=0
+ep 150 balanced  reward=  34.3 caught=0 steps= 400 trans=0
+ep 160 aggressive reward= -50.7 caught=0 steps=  41 trans=0
+ep 170 aggressive reward= -44.6 caught=0 steps=  54 trans=0
+ep 180 aggressive reward= -10.3 caught=0 steps=  69 trans=0
+ep 190 aggressive reward= -32.0 caught=0 steps=  45 trans=0
+ep 200 defensive reward=  60.5 caught=0 steps= 400 trans=0
+ep 210 defensive reward= 120.0 caught=1 steps= 287 trans=0
+ep 220 defensive reward= 125.0 caught=1 steps= 249 trans=0
+ep 230 defensive reward= 120.5 caught=1 steps= 104 trans=0
+ep 240 evasive   reward=  45.7 caught=0 steps= 400 trans=0
+ep 250 evasive   reward= 127.3 caught=0 steps= 400 trans=0
+ep 260 evasive   reward= 107.6 caught=1 steps= 164 trans=0
+ep 270 evasive   reward= 118.7 caught=1 steps= 117 trans=0
+ep 280 balanced  reward=  19.9 caught=0 steps= 400 trans=0
+ep 290 balanced  reward=  99.1 caught=1 steps= 288 trans=0
+ep 299 balanced  reward=  22.7 caught=0 steps= 400 trans=0
+train done (218.5s) -> data/npc_partitioned-gt-seed0.pt, results/train_partitioned-gt-seed0.json

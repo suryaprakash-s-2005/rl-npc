@@ -1,0 +1,136 @@
+{
+  "rows": [
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "single",
+      "seed": 0,
+      "win_rate": 0.3,
+      "adapt_time": -2.0,
+      "mean_reward": 272.9762929912465,
+      "transitions_detected": 17,
+      "train_time": 206.32546973228455
+    },
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "single",
+      "seed": 1,
+      "win_rate": 0.8,
+      "adapt_time": 26.9,
+      "mean_reward": 270.80370556670994,
+      "transitions_detected": 12,
+      "train_time": 232.0979835987091
+    },
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "single",
+      "seed": 2,
+      "win_rate": 1.0,
+      "adapt_time": 23.0,
+      "mean_reward": 367.00208972152706,
+      "transitions_detected": 12,
+      "train_time": 192.94958519935608
+    },
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 0,
+      "win_rate": 1.0,
+      "adapt_time": 17.1,
+      "mean_reward": 345.2320163957181,
+      "transitions_detected": 11,
+      "train_time": 231.01694202423096
+    },
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 1,
+      "win_rate": 0.5,
+      "adapt_time": 14.6,
+      "mean_reward": 295.991889015069,
+      "transitions_detected": 15,
+      "train_time": 199.9527940750122
+    },
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 2,
+      "win_rate": 0.7,
+      "adapt_time": 35.2,
+      "mean_reward": 336.85712343461756,
+      "transitions_detected": 16,
+      "train_time": 183.12999367713928
+    },
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "single",
+      "seed": 3,
+      "win_rate": 1.0,
+      "adapt_time": 14.4,
+      "mean_reward": 358.6713324419807,
+      "transitions_detected": 14,
+      "train_time": 209.5179672241211
+    },
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "single",
+      "seed": 4,
+      "win_rate": 0.7,
+      "adapt_time": 59.1,
+      "mean_reward": 289.64560127595627,
+      "transitions_detected": 20,
+      "train_time": 204.08668732643127
+    },
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "single",
+      "seed": 5,
+      "win_rate": 1.0,
+      "adapt_time": 20.5,
+      "mean_reward": 383.0056949256137,
+      "transitions_detected": 16,
+      "train_time": 176.6796054840088
+    },
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 3,
+      "win_rate": 0.4,
+      "adapt_time": 43.8,
+      "mean_reward": 345.22020786727563,
+      "transitions_detected": 22,
+      "train_time": 200.06536650657654
+    },
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 4,
+      "win_rate": 0.8,
+      "adapt_time": 17.9,
+      "mean_reward": 333.13572888475136,
+      "transitions_detected": 21,
+      "train_time": 220.04924631118774
+    },
+    {
+      "tagging": "det",
+      "cond": "off",
+      "variant": "partitioned",
+      "seed": 5,
+      "win_rate": 0.9,
+      "adapt_time": 18.3,
+      "mean_reward": 338.2740137813141,
+      "transitions_detected": 11,
+      "train_time": 225.09913396835327
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+# Strategy-Transition-Aware Experience Sharing for Personalized RL NPCs
+#
+# Shared configuration for the project. Runtime overrides can be passed on the
+# command line (simple key=value) and are merged over these defaults.
+
+seed: 0
+
+env:
+  world_size: 20.0          # square world side length
+  dt: 0.1                   # physics timestep
+  npc_max_speed: 3.0
+  npc_sensor_range: 20.0
+  episode_len: 400          # max steps per episode
+  catch_dist: 1.1           # catch/win threshold
+  reward_catch: 200.0       # terminal catch reward (dominates dense shaping)
+  reward_heading: 0.3       # dense reward for heading at the player
+  reward_approach: 2.0      # dense closing-distance reward scale
+  reward_penalty: 0.02      # per-step time penalty
+  # Player controller parameters (used when no detector is available for demo)
+  player_cfg:
+    aggression: 0.6
+    evasion_distance: 0.0
+    clinging: 0.0
+
+strategy:
+  # label -> player parameter vector
+  # (aggression, retreat_rate, evasion_distance, max_speed_mult, engagement_dist,
+  #  attack_frequency, attack_range, retreat_health_threshold)
+  params:
+    aggressive: [0.95, 0.05, 0.0, 1.0, 1.2, 0.85, 1.5, 0.20]
+    defensive:  [0.10, 0.85, 0.2, 0.7, 16.0, 0.35, 1.4, 0.60]
+    evasive:    [0.35, 0.25, 1.6, 1.20, 5.0, 0.55, 1.5, 0.35]
+    balanced:   [0.65, 0.30, 0.3, 1.0, 2.2, 0.65, 1.5, 0.30]
+  labels: [aggressive, defensive, evasive, balanced]
+  feature_window: 15        # sliding-window length for telemetry features
+  dt: 0.1
+
+combat:
+  player_hp: 20
+  npc_hp: 20
+  attack_range: 1.6         # sword reach (world units)
+  cone: 70                  # facing cone half-angle (deg) for a hit
+  attack_cooldown: 4        # steps between attacks
+  damage: 2                 # HP removed per hit
+  reward_win: 150.0
+  reward_lose: 50.0
+  reward_hit: 8.0
+  reward_heading: 0.6
+  reward_approach: 1.2
+  reward_inrange: 1.0
+  reward_penalty: 0.005
+
+detector:
+  hidden_sizes: [64, 64]
+  epochs: 60
+  lr: 0.001
+  batch_size: 128
+  context_len: 8
+  rollout_episodes_per_strategy: 40   # telemetry gen for training
+  rollout_episode_len: 200
+  model_path: data/detector.pt
+
+transitions:
+  cusum_k: 0.5              # CUSUM decay on the binary change indicator (0..1)
+  cusum_h: 6.0              # CUSUM threshold for arming a candidate change
+  min_segment: 10           # min steps before a new change is accepted
+  confirm: 10               # consecutive new-label steps to confirm a transition
+  score_smoothing: 4        # EMA smoothing window on classifier score
+
+rl:
+  algorithm: dqn
+  hidden_sizes: [128, 128]
+  lr: 0.0005
+  gamma: 0.99
+  tau: 0.005                # soft target update
+  target_update_freq: 500
+  buffer_capacity: 50000
+  batch_size: 256
+  learn_every: 2            # run a learning update every N steps (latency-bound)
+  epsilon_start: 0.4
+  epsilon_end: 0.02
+  epsilon_decay_steps: 15000
+  replay: partitioned       # single | partitioned | partitioned_noprior
+  cond_on_strategy: true    # append detected-strategy one-hot to the state
+  prior_power: 1.6          # strategy prioritization exponent
+  stale_decay: 0.5          # weight multiplier applied to stale-strategy buffers
+  episodes: 400
+  switch_every: 40          # force a player strategy switch every N episodes
+  eval_switch_every: 60
+  seed_demos: 30
+  params_jitter: 0.2        # 0..~0.3 domain randomization on player params
+  in_episode_switch: true   # train ON mid-episode personality transitions
+  switch_step: 100          # step at which the player changes strategy

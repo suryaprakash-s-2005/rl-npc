@@ -1,0 +1,22 @@
+generating random-walk telemetry ...
+dataset: (29920, 80) classes=[] counts=[7480, 7480, 7480, 7480]
+  epoch   1  train_acc=0.848  loss=0.0983
+  epoch  10  train_acc=0.959  loss=0.0606
+  epoch  20  train_acc=0.963  loss=0.1040
+  epoch  30  train_acc=0.965  loss=0.1079
+  epoch  40  train_acc=0.965  loss=0.0733
+  epoch  50  train_acc=0.966  loss=0.0494
+  epoch  60  train_acc=0.969  loss=0.0630
+saved detector -> D:\IEEE\project3\data\audit\detector_hp60_randomwalk.pt
+{
+  "detector": "hp60-randomwalk",
+  "dataset_size": 29920,
+  "validation_accuracy": 0.9712566844919787,
+  "per_class_recall": {
+    "aggressive": 0.9621109607577808,
+    "defensive": 0.9783491204330176,
+    "evasive": 0.973462783171521,
+    "balanced": 0.9710047201618341
+  },
+  "model_path": "D:\\IEEE\\project3\\data\\audit\\detector_hp60_randomwalk.pt"
+}

@@ -1,0 +1,1 @@
+"""Environment package: chase/grid pursuit game with strategy-parameterized player."""

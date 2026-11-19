@@ -1,0 +1,30 @@
+{
+  "tag": "single200k-gt-off-ep400-sw40-seed0",
+  "arm": "single200k",
+  "cond": "off",
+  "label_source": "groundtruth",
+  "seed": 0,
+  "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-off-ep400-sw40-seed0.pt",
+  "offline": {
+    "win_rate": 0.9166666666666666,
+    "mean_adaptation_time": 18.666666666666668,
+    "median_adaptation_time": 0.0,
+    "n_adapt_included": 12,
+    "n_ok": 12,
+    "n_censored": 0,
+    "n_no_post": 0,
+    "n_short_base": 0
+  },
+  "online": {
+    "win_rate": 0.8333333333333334,
+    "mean_adaptation_time": 8.083333333333334,
+    "median_adaptation_time": 0.0,
+    "n_adapt_included": 12,
+    "n_ok": 12,
+    "n_censored": 0,
+    "n_no_post": 0,
+    "n_short_base": 0
+  },
+  "train_elapsed_s": 455.6439778804779,
+  "wall_elapsed_s": 471.558224439621
+}

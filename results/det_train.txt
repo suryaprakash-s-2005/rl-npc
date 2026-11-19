@@ -1,0 +1,16 @@
+generating telemetry dataset ...
+  dataset size: 29920  classes: [7480, 7480, 7480, 7480]
+  epoch   1  train_acc=0.812  loss=0.2148
+  epoch  10  train_acc=0.899  loss=0.1801
+  epoch  20  train_acc=0.905  loss=0.1880
+  epoch  30  train_acc=0.906  loss=0.2706
+  epoch  40  train_acc=0.907  loss=0.2525
+  epoch  50  train_acc=0.908  loss=0.1492
+  epoch  60  train_acc=0.910  loss=0.0933
+validation accuracy: 0.915
+  aggressive  : 0.807
+  defensive   : 0.999
+  evasive     : 0.886
+  balanced    : 0.970
+saved detector -> data/detector.pt
+total time: 37.3s

@@ -1,0 +1,30 @@
+{
+  "tag": "partitioned-gt-off-ep400-sw40-seed2",
+  "arm": "partitioned",
+  "cond": "off",
+  "label_source": "groundtruth",
+  "seed": 2,
+  "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-off-ep400-sw40-seed2.pt",
+  "offline": {
+    "win_rate": 0.9166666666666666,
+    "mean_adaptation_time": 15.0,
+    "median_adaptation_time": 0.0,
+    "n_adapt_included": 12,
+    "n_ok": 12,
+    "n_censored": 0,
+    "n_no_post": 0,
+    "n_short_base": 0
+  },
+  "online": {
+    "win_rate": 0.9166666666666666,
+    "mean_adaptation_time": 6.083333333333333,
+    "median_adaptation_time": 0.0,
+    "n_adapt_included": 12,
+    "n_ok": 12,
+    "n_censored": 0,
+    "n_no_post": 0,
+    "n_short_base": 0
+  },
+  "train_elapsed_s": 474.9915533065796,
+  "wall_elapsed_s": 483.36062932014465
+}

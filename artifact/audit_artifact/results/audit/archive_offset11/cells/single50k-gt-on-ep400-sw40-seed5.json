@@ -1,0 +1,30 @@
+{
+  "tag": "single50k-gt-on-ep400-sw40-seed5",
+  "arm": "single50k",
+  "cond": "on",
+  "label_source": "groundtruth",
+  "seed": 5,
+  "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single50k-gt-on-ep400-sw40-seed5.pt",
+  "offline": {
+    "win_rate": 0.3333333333333333,
+    "mean_adaptation_time": 2.3333333333333335,
+    "median_adaptation_time": 0.0,
+    "n_adapt_included": 12,
+    "n_ok": 12,
+    "n_censored": 0,
+    "n_no_post": 0,
+    "n_short_base": 0
+  },
+  "online": {
+    "win_rate": 0.0,
+    "mean_adaptation_time": 31.25,
+    "median_adaptation_time": 0.0,
+    "n_adapt_included": 12,
+    "n_ok": 11,
+    "n_censored": 1,
+    "n_no_post": 0,
+    "n_short_base": 0
+  },
+  "train_elapsed_s": 398.7015733718872,
+  "wall_elapsed_s": 405.29703855514526
+}

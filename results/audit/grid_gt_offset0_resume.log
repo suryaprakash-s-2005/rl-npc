@@ -1,0 +1,6 @@
+grid: 36 cells, 4 remaining, workers=1
+done single50k-gt-on-ep400-sw40-seed1 win_off=0.417 win_onl=0.333
+done single50k-gt-on-ep400-sw40-seed3 win_off=0.667 win_onl=0.750
+done single50k-gt-on-ep400-sw40-seed4 win_off=0.667 win_onl=0.000
+done single50k-gt-on-ep400-sw40-seed5 win_off=0.417 win_onl=0.250
+saved D:\IEEE\project3\results\audit\grid_groundtruth.json (36 rows)

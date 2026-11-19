@@ -1,0 +1,15 @@
+seeded 7568 expert transitions
+ep   0 aggressive reward= -66.6 caught=0 steps=  61 trans=0
+ep  10 evasive   reward= 205.9 caught=0 steps= 400 trans=0
+ep  20 aggressive reward=  67.5 caught=0 steps= 400 trans=0
+ep  30 evasive   reward= 320.4 caught=0 steps= 400 trans=0
+ep  40 aggressive reward= -61.8 caught=0 steps=  71 trans=0
+ep  50 evasive   reward= 453.4 caught=1 steps= 307 trans=0
+ep  60 aggressive reward= 320.7 caught=1 steps=  45 trans=0
+ep  70 evasive   reward= 363.3 caught=1 steps=  84 trans=0
+ep  80 aggressive reward= 327.8 caught=1 steps=  55 trans=0
+ep  90 evasive   reward= 382.4 caught=1 steps= 102 trans=0
+ep 100 aggressive reward= 329.9 caught=1 steps=  59 trans=0
+ep 110 evasive   reward= 363.4 caught=1 steps=  78 trans=0
+ep 119 balanced  reward= 350.8 caught=1 steps=  91 trans=0
+train done (53.5s) -> data/npc_partitioned-gt-seed0.pt, results/train_partitioned-gt-seed0.json

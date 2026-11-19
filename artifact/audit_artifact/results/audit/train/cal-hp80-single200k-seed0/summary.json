@@ -1,0 +1,3559 @@
+{
+  "tag": "cal-hp80-single200k-seed0",
+  "config": {
+    "seed": 0,
+    "env": {
+      "world_size": 20.0,
+      "dt": 0.1,
+      "npc_max_speed": 3.0,
+      "npc_sensor_range": 20.0,
+      "episode_len": 400,
+      "catch_dist": 1.1,
+      "player_cfg": {
+        "aggression": 0.6,
+        "evasion_distance": 0.0,
+        "clinging": 0.0
+      }
+    },
+    "strategy": {
+      "params": {
+        "aggressive": [
+          0.95,
+          0.05,
+          0.0,
+          1.0,
+          1.2,
+          0.85,
+          1.5,
+          0.2
+        ],
+        "defensive": [
+          0.1,
+          0.85,
+          0.2,
+          0.7,
+          16.0,
+          0.35,
+          1.4,
+          0.6
+        ],
+        "evasive": [
+          0.35,
+          0.25,
+          1.6,
+          1.2,
+          5.0,
+          0.55,
+          1.5,
+          0.35
+        ],
+        "balanced": [
+          0.65,
+          0.3,
+          0.3,
+          1.0,
+          2.2,
+          0.65,
+          1.5,
+          0.3
+        ]
+      },
+      "labels": [
+        "aggressive",
+        "defensive",
+        "evasive",
+        "balanced"
+      ],
+      "feature_window": 15,
+      "dt": 0.1
+    },
+    "combat": {
+      "player_hp": 80,
+      "npc_hp": 20,
+      "attack_range": 1.6,
+      "cone": 70,
+      "attack_cooldown": 4,
+      "damage": 2,
+      "reward_win": 150.0,
+      "reward_lose": 50.0,
+      "reward_hit": 8.0,
+      "reward_heading": 0.6,
+      "reward_approach": 1.2,
+      "reward_inrange": 1.0,
+      "reward_penalty": 0.005
+    },
+    "detector": {
+      "hidden_sizes": [
+        64,
+        64
+      ],
+      "epochs": 60,
+      "lr": 0.001,
+      "batch_size": 128,
+      "context_len": 8,
+      "rollout_episodes_per_strategy": 40,
+      "rollout_episode_len": 200,
+      "model_path": "D:\\IEEE\\project3\\data\\audit\\detector_hp60_randomwalk.pt"
+    },
+    "transitions": {
+      "cusum_k": 0.5,
+      "cusum_h": 6.0,
+      "min_segment": 10,
+      "confirm": 10,
+      "score_smoothing": 4
+    },
+    "rl": {
+      "algorithm": "dqn",
+      "hidden_sizes": [
+        128,
+        128
+      ],
+      "lr": 0.0005,
+      "gamma": 0.99,
+      "tau": 0.005,
+      "target_update_freq": 500,
+      "buffer_capacity": 200000,
+      "batch_size": 256,
+      "learn_every": 2,
+      "epsilon_start": 0.4,
+      "epsilon_end": 0.02,
+      "epsilon_decay_steps": 15000,
+      "replay": "single",
+      "cond_on_strategy": false,
+      "prior_power": 1.6,
+      "stale_decay": 0.5,
+      "episodes": 100,
+      "switch_every": 40,
+      "eval_switch_every": 60,
+      "seed_demos": 10,
+      "params_jitter": 0.2,
+      "in_episode_switch": true,
+      "switch_step": 40,
+      "strategy_source": "groundtruth",
+      "network": "dqn",
+      "weight_decay": 0.0,
+      "target_clip": 0.0,
+      "mask_oracle_onehot": false,
+      "legacy_global_rng": false,
+      "replay_seed_offset": 0,
+      "f5_trace": false
+    },
+    "audit": {
+      "arm": "single200k",
+      "label_source": "groundtruth",
+      "cond": false,
+      "switch_steps": [
+        40
+      ],
+      "eval_episodes": 12,
+      "roll_win": 20,
+      "detector_label": "randomwalk",
+      "protocol": "hp60-npc20-switch40",
+      "tag": "cal-hp80-single200k-seed0"
+    }
+  },
+  "history": [
+    {
+      "episode": 0,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 210.01886764040603,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 1.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 1,
+          "pre_mean": 1.0266083149773544,
+          "target": 1.0266083149773544
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 1.1189897906221449,
+      "q_max_abs": 7.566816329956055,
+      "loss": 5.07500763297081,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 1,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 27.552839585753198,
+      "caught": 0,
+      "steps": 186,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.13377224085947384,
+          "target": 0.13377224085947384
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 3.0260852395847277,
+      "q_max_abs": 19.619455337524414,
+      "loss": 3.864749752065187,
+      "n_updates": 93,
+      "f5_rows": 0
+    },
+    {
+      "episode": 2,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 415.3610280402591,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.41562969247079395,
+          "target": 0.41562969247079395
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 6.137270369529724,
+      "q_max_abs": 30.642215728759766,
+      "loss": 2.4325442403554915,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 3,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 49.714513385967564,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.07574581753921475,
+          "target": 0.07574581753921475
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 11.69915363073349,
+      "q_max_abs": 35.004329681396484,
+      "loss": 2.869861972332001,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 4,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 16.184517078623415,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 1.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 1,
+          "pre_mean": 0.8957236966303099,
+          "target": 0.8957236966303099
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 13.898840889930725,
+      "q_max_abs": 30.78880500793457,
+      "loss": 2.5986116236448287,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 5,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": -32.6128241663752,
+      "caught": 0,
+      "steps": 129,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": -0.30611288541360243,
+          "target": -0.30611288541360243
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 15.30594265460968,
+      "q_max_abs": 32.1181755065918,
+      "loss": 2.391913965344429,
+      "n_updates": 64,
+      "f5_rows": 0
+    },
+    {
+      "episode": 6,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 632.5502267344325,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 2.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 2,
+          "pre_mean": 0.18315889140621136,
+          "target": 0.18315889140621136
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 19.054117665290832,
+      "q_max_abs": 40.506771087646484,
+      "loss": 2.7313155353069307,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 7,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 270.74461105132957,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 222.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 222,
+          "pre_mean": 3.089997540814259,
+          "target": 3.089997540814259
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 21.921930141448975,
+      "q_max_abs": 45.25827407836914,
+      "loss": 2.825863507986069,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 8,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 63.205031618657,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.3273440222052857,
+          "target": 0.3273440222052857
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 24.3876180267334,
+      "q_max_abs": 54.623172760009766,
+      "loss": 2.9315626680850984,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 9,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": -41.28308912646351,
+      "caught": 0,
+      "steps": 159,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": -0.23208112041876355,
+          "target": -0.23208112041876355
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 27.4874285697937,
+      "q_max_abs": 55.62165069580078,
+      "loss": 2.9333141550421713,
+      "n_updates": 80,
+      "f5_rows": 0
+    },
+    {
+      "episode": 10,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 680.9503950788495,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 2.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 2,
+          "pre_mean": 0.1965193243733911,
+          "target": 0.1965193243733911
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 28.892371015548704,
+      "q_max_abs": 60.26170349121094,
+      "loss": 3.220118092894554,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 11,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 153.48263978568752,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "censored",
+      "adaptation_time": 360.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "censored",
+          "value": 360,
+          "pre_mean": 3.10496472184993,
+          "target": 3.10496472184993
+        }
+      ],
+      "n_ok": 0,
+      "n_censored": 1,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 30.836852016448976,
+      "q_max_abs": 69.31810760498047,
+      "loss": 3.5641494184732436,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 12,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 334.11109015946914,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": -0.6790645337241166,
+          "target": -0.6790645337241166
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 34.05607539176941,
+      "q_max_abs": 73.3843765258789,
+      "loss": 3.816395024061203,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 13,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": -51.04968370545042,
+      "caught": 0,
+      "steps": 92,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.34938242148977533,
+          "target": 0.34938242148977533
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 34.82318438654361,
+      "q_max_abs": 74.76348114013672,
+      "loss": 3.797203084696894,
+      "n_updates": 46,
+      "f5_rows": 0
+    },
+    {
+      "episode": 14,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 654.043026389443,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.33780612014608546,
+          "target": 0.33780612014608546
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 36.0420062828064,
+      "q_max_abs": 79.05230712890625,
+      "loss": 4.247997267246246,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 15,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 843.7684124351966,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 10.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 10,
+          "pre_mean": 0.25379900963157315,
+          "target": 0.25379900963157315
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 39.43109218597412,
+      "q_max_abs": 86.99284362792969,
+      "loss": 4.911874296665192,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 16,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 402.03132331862116,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.4537908601315445,
+          "target": 0.4537908601315445
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 41.22257495880127,
+      "q_max_abs": 91.39471435546875,
+      "loss": 5.232328908443451,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 17,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": -13.016452503098165,
+      "caught": 0,
+      "steps": 94,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 3.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 3,
+          "pre_mean": 0.38325786481898694,
+          "target": 0.38325786481898694
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 42.00720563847968,
+      "q_max_abs": 92.33409881591797,
+      "loss": 5.106009914519939,
+      "n_updates": 47,
+      "f5_rows": 0
+    },
+    {
+      "episode": 18,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 866.2403028979111,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.2966819982230181,
+          "target": 0.2966819982230181
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 44.8172926902771,
+      "q_max_abs": 100.31912231445312,
+      "loss": 5.793705008029938,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 19,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 151.59899207749467,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "censored",
+      "adaptation_time": 360.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "censored",
+          "value": 360,
+          "pre_mean": 2.577717122281519,
+          "target": 2.577717122281519
+        }
+      ],
+      "n_ok": 0,
+      "n_censored": 1,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 46.58332611083984,
+      "q_max_abs": 104.15099334716797,
+      "loss": 6.168694666624069,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 20,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 942.316517193442,
+      "caught": 1,
+      "steps": 189,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 6.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 6,
+          "pre_mean": 2.753522365467023,
+          "target": 2.753522365467023
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 47.69009833640241,
+      "q_max_abs": 106.66719818115234,
+      "loss": 6.354168983215981,
+      "n_updates": 94,
+      "f5_rows": 0
+    },
+    {
+      "episode": 21,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 226.94730998329953,
+      "caught": 0,
+      "steps": 93,
+      "transitions": 0,
+      "adaptation_status": "censored",
+      "adaptation_time": 53.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "censored",
+          "value": 53,
+          "pre_mean": 5.135959543720178,
+          "target": 5.135959543720178
+        }
+      ],
+      "n_ok": 0,
+      "n_censored": 1,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 48.38441020884412,
+      "q_max_abs": 107.43385314941406,
+      "loss": 6.772727854708408,
+      "n_updates": 47,
+      "f5_rows": 0
+    },
+    {
+      "episode": 22,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 770.1310148443819,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.15997210755179678,
+          "target": 0.15997210755179678
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 51.491513137817385,
+      "q_max_abs": 116.06346893310547,
+      "loss": 7.05566665649414,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 23,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 565.8986331787833,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.19821617449079393,
+          "target": 0.19821617449079393
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 53.48674575805664,
+      "q_max_abs": 120.19957733154297,
+      "loss": 7.432478966712952,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 24,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 928.7794165675272,
+      "caught": 1,
+      "steps": 199,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 1.0493467805035297,
+          "target": 1.0493467805035297
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 54.17203614206025,
+      "q_max_abs": 122.29537200927734,
+      "loss": 7.352081149515479,
+      "n_updates": 99,
+      "f5_rows": 0
+    },
+    {
+      "episode": 25,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 41.12538590938043,
+      "caught": 0,
+      "steps": 95,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.3538708183866185,
+          "target": 0.3538708183866185
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 56.3865385055542,
+      "q_max_abs": 127.67533874511719,
+      "loss": 8.003038803736368,
+      "n_updates": 48,
+      "f5_rows": 0
+    },
+    {
+      "episode": 26,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 693.6252268426078,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.17096249634627517,
+          "target": 0.17096249634627517
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 58.411136646270755,
+      "q_max_abs": 130.9536590576172,
+      "loss": 7.961952474117279,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 27,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 1016.448325617804,
+      "caught": 1,
+      "steps": 386,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 2.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 2,
+          "pre_mean": 0.3549723340202867,
+          "target": 0.3549723340202867
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 59.893562336659805,
+      "q_max_abs": 134.77313232421875,
+      "loss": 8.370628077749144,
+      "n_updates": 193,
+      "f5_rows": 0
+    },
+    {
+      "episode": 28,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 182.07368859987253,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": -0.45690962749369934,
+          "target": -0.45690962749369934
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 62.44452926635742,
+      "q_max_abs": 142.9561767578125,
+      "loss": 8.777154347896577,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 29,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": -61.177168233430095,
+      "caught": 0,
+      "steps": 97,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.30404570473776743,
+          "target": 0.30404570473776743
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 63.85683520634969,
+      "q_max_abs": 144.39439392089844,
+      "loss": 8.570783376693726,
+      "n_updates": 48,
+      "f5_rows": 0
+    },
+    {
+      "episode": 30,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 1041.4712812535686,
+      "caught": 1,
+      "steps": 304,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 1.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 1,
+          "pre_mean": 0.3194649545484808,
+          "target": 0.3194649545484808
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 64.65227199855603,
+      "q_max_abs": 147.56893920898438,
+      "loss": 8.913561977838215,
+      "n_updates": 152,
+      "f5_rows": 0
+    },
+    {
+      "episode": 31,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 1007.1779855240836,
+      "caught": 1,
+      "steps": 371,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 1.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 1,
+          "pre_mean": 4.421437580588437,
+          "target": 4.421437580588437
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 66.53054631140924,
+      "q_max_abs": 151.1509552001953,
+      "loss": 9.079999208450317,
+      "n_updates": 186,
+      "f5_rows": 0
+    },
+    {
+      "episode": 32,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 205.13368276377065,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "censored",
+      "adaptation_time": 360.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "censored",
+          "value": 360,
+          "pre_mean": 2.06944927641817,
+          "target": 2.06944927641817
+        }
+      ],
+      "n_ok": 0,
+      "n_censored": 1,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 69.55375478744507,
+      "q_max_abs": 160.4244384765625,
+      "loss": 9.942106556892394,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 33,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 20.357508962404253,
+      "caught": 0,
+      "steps": 113,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.32812815372935233,
+          "target": 0.32812815372935233
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 69.99984107698712,
+      "q_max_abs": 161.63124084472656,
+      "loss": 9.78586700132915,
+      "n_updates": 56,
+      "f5_rows": 0
+    },
+    {
+      "episode": 34,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 965.753010081072,
+      "caught": 1,
+      "steps": 211,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.35862504846860865,
+          "target": 0.35862504846860865
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 70.7652018565052,
+      "q_max_abs": 164.2735137939453,
+      "loss": 10.08140530676212,
+      "n_updates": 106,
+      "f5_rows": 0
+    },
+    {
+      "episode": 35,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 417.7449082898385,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 63.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 63,
+          "pre_mean": 0.3146978877656945,
+          "target": 0.3146978877656945
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 72.59384048461914,
+      "q_max_abs": 170.95860290527344,
+      "loss": 10.034357795715332,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 36,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 562.7355960841367,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 1.314156679335764,
+          "target": 1.314156679335764
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 75.68575588226318,
+      "q_max_abs": 173.4143829345703,
+      "loss": 10.47968556880951,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 37,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 19.097501254578177,
+      "caught": 0,
+      "steps": 101,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.360540336943166,
+          "target": 0.360540336943166
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 75.63179077148438,
+      "q_max_abs": 175.35987854003906,
+      "loss": 10.518555831909179,
+      "n_updates": 50,
+      "f5_rows": 0
+    },
+    {
+      "episode": 38,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 768.9388688382538,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 2.3920103056988125,
+          "target": 2.3920103056988125
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 76.98416347503662,
+      "q_max_abs": 182.86941528320312,
+      "loss": 10.409771733283996,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 39,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 958.6358665992227,
+      "caught": 1,
+      "steps": 223,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 3.3621494841631794,
+          "target": 3.3621494841631794
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 80.63925640923637,
+      "q_max_abs": 186.46368408203125,
+      "loss": 10.603877348559243,
+      "n_updates": 112,
+      "f5_rows": 0
+    },
+    {
+      "episode": 40,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 634.2594974945271,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.6094634134203483,
+          "target": 0.6094634134203483
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 82.20127578735351,
+      "q_max_abs": 190.01332092285156,
+      "loss": 10.962388296127319,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 41,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 74.24416866327198,
+      "caught": 0,
+      "steps": 106,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.24876719030656388,
+          "target": 0.24876719030656388
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 82.6727817463425,
+      "q_max_abs": 189.89620971679688,
+      "loss": 10.88774115184568,
+      "n_updates": 53,
+      "f5_rows": 0
+    },
+    {
+      "episode": 42,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 937.7364342385389,
+      "caught": 1,
+      "steps": 171,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 5.2271468399655525,
+          "target": 5.2271468399655525
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 83.73373978558709,
+      "q_max_abs": 194.28318786621094,
+      "loss": 10.943894599465763,
+      "n_updates": 85,
+      "f5_rows": 0
+    },
+    {
+      "episode": 43,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 970.1054972055324,
+      "caught": 1,
+      "steps": 260,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 71.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 71,
+          "pre_mean": 1.55507584868719,
+          "target": 1.55507584868719
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 85.70477388822115,
+      "q_max_abs": 196.91256713867188,
+      "loss": 11.512140398759108,
+      "n_updates": 130,
+      "f5_rows": 0
+    },
+    {
+      "episode": 44,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 165.6182195737382,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": -0.21888410091175733,
+          "target": -0.21888410091175733
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 87.98724922180176,
+      "q_max_abs": 203.29586791992188,
+      "loss": 11.750629169940948,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 45,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 55.434209421781276,
+      "caught": 0,
+      "steps": 111,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.31883429834548516,
+          "target": 0.31883429834548516
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 88.76493235996791,
+      "q_max_abs": 202.0897674560547,
+      "loss": 11.640006014278956,
+      "n_updates": 56,
+      "f5_rows": 0
+    },
+    {
+      "episode": 46,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 941.4925990069598,
+      "caught": 1,
+      "steps": 230,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.238270164141906,
+          "target": 0.238270164141906
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 89.84791193423064,
+      "q_max_abs": 205.25457763671875,
+      "loss": 11.528842967489492,
+      "n_updates": 115,
+      "f5_rows": 0
+    },
+    {
+      "episode": 47,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 986.6953472605795,
+      "caught": 1,
+      "steps": 195,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 2.5920646126252733,
+          "target": 2.5920646126252733
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 93.28741580923808,
+      "q_max_abs": 209.6519012451172,
+      "loss": 11.839695350411011,
+      "n_updates": 97,
+      "f5_rows": 0
+    },
+    {
+      "episode": 48,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 862.8857518352368,
+      "caught": 1,
+      "steps": 245,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.051315070389455465,
+          "target": 0.051315070389455465
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 94.60776507369872,
+      "q_max_abs": 213.4923095703125,
+      "loss": 11.8229057885767,
+      "n_updates": 123,
+      "f5_rows": 0
+    },
+    {
+      "episode": 49,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": -12.974845596530301,
+      "caught": 0,
+      "steps": 93,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.3403102846624537,
+          "target": 0.3403102846624537
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 94.88279856806216,
+      "q_max_abs": 212.5939483642578,
+      "loss": 12.44914492316868,
+      "n_updates": 46,
+      "f5_rows": 0
+    },
+    {
+      "episode": 50,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 894.2571341653078,
+      "caught": 1,
+      "steps": 158,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 5.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 5,
+          "pre_mean": 5.032331993707745,
+          "target": 5.032331993707745
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 96.74922865855542,
+      "q_max_abs": 213.8000946044922,
+      "loss": 12.108028146285045,
+      "n_updates": 79,
+      "f5_rows": 0
+    },
+    {
+      "episode": 51,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 910.4300730415126,
+      "caught": 1,
+      "steps": 174,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 54.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 54,
+          "pre_mean": 5.258520159167081,
+          "target": 5.258520159167081
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 98.2348403930664,
+      "q_max_abs": 218.82412719726562,
+      "loss": 11.811017140574839,
+      "n_updates": 87,
+      "f5_rows": 0
+    },
+    {
+      "episode": 52,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 242.47608444530687,
+      "caught": 0,
+      "steps": 97,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 4.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 4,
+          "pre_mean": 2.6397312785709692,
+          "target": 2.6397312785709692
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 99.08782258325694,
+      "q_max_abs": 218.53440856933594,
+      "loss": 11.648064934477514,
+      "n_updates": 49,
+      "f5_rows": 0
+    },
+    {
+      "episode": 53,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 145.68361226681225,
+      "caught": 0,
+      "steps": 107,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 1.3315654675343693,
+          "target": 1.3315654675343693
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 99.89968209896448,
+      "q_max_abs": 218.90310668945312,
+      "loss": 12.173207930798801,
+      "n_updates": 53,
+      "f5_rows": 0
+    },
+    {
+      "episode": 54,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 959.564384161773,
+      "caught": 1,
+      "steps": 202,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 3.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 3,
+          "pre_mean": 1.2056538515440278,
+          "target": 1.2056538515440278
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 101.47353869145459,
+      "q_max_abs": 224.5899200439453,
+      "loss": 12.049543673449223,
+      "n_updates": 101,
+      "f5_rows": 0
+    },
+    {
+      "episode": 55,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 920.9169978481754,
+      "caught": 1,
+      "steps": 179,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 61.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 61,
+          "pre_mean": 5.32944611745007,
+          "target": 5.32944611745007
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 104.60793262057834,
+      "q_max_abs": 224.48915100097656,
+      "loss": 12.340008698569404,
+      "n_updates": 90,
+      "f5_rows": 0
+    },
+    {
+      "episode": 56,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 923.1859447712916,
+      "caught": 1,
+      "steps": 186,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 1.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 1,
+          "pre_mean": 2.2644807287774538,
+          "target": 2.2644807287774538
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 105.84413836079258,
+      "q_max_abs": 227.47280883789062,
+      "loss": 12.025787476570375,
+      "n_updates": 93,
+      "f5_rows": 0
+    },
+    {
+      "episode": 57,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 102.01813192367631,
+      "caught": 0,
+      "steps": 129,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.1674789542935262,
+          "target": 0.1674789542935262
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 105.77505540847778,
+      "q_max_abs": 228.2149658203125,
+      "loss": 12.285971701145172,
+      "n_updates": 64,
+      "f5_rows": 0
+    },
+    {
+      "episode": 58,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 1000.6493279717048,
+      "caught": 1,
+      "steps": 222,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.19370046050424974,
+          "target": 0.19370046050424974
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 106.69460159164291,
+      "q_max_abs": 230.28585815429688,
+      "loss": 11.891002453125274,
+      "n_updates": 111,
+      "f5_rows": 0
+    },
+    {
+      "episode": 59,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 993.2513783436987,
+      "caught": 1,
+      "steps": 196,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 13.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 13,
+          "pre_mean": 4.428015752170703,
+          "target": 4.428015752170703
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 110.2680098864497,
+      "q_max_abs": 234.24537658691406,
+      "loss": 12.116306596872757,
+      "n_updates": 98,
+      "f5_rows": 0
+    },
+    {
+      "episode": 60,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 868.3300134163014,
+      "caught": 1,
+      "steps": 166,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 2.0496773985865113,
+          "target": 2.0496773985865113
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 111.25437090770308,
+      "q_max_abs": 238.08816528320312,
+      "loss": 12.355763211307755,
+      "n_updates": 83,
+      "f5_rows": 0
+    },
+    {
+      "episode": 61,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": -0.9658279311860838,
+      "caught": 0,
+      "steps": 101,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.4387940781120312,
+          "target": 0.4387940781120312
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 113.13025530646829,
+      "q_max_abs": 238.07118225097656,
+      "loss": 12.176422904519473,
+      "n_updates": 51,
+      "f5_rows": 0
+    },
+    {
+      "episode": 62,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 978.1166602953773,
+      "caught": 1,
+      "steps": 195,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 3.2033813909989854,
+          "target": 3.2033813909989854
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 114.38214189981677,
+      "q_max_abs": 240.41648864746094,
+      "loss": 12.398878805416146,
+      "n_updates": 97,
+      "f5_rows": 0
+    },
+    {
+      "episode": 63,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 1008.673387119276,
+      "caught": 1,
+      "steps": 182,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 4.300698579141441,
+          "target": 4.300698579141441
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 114.91263597090166,
+      "q_max_abs": 241.5104522705078,
+      "loss": 12.275853733440021,
+      "n_updates": 91,
+      "f5_rows": 0
+    },
+    {
+      "episode": 64,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 308.77241521440396,
+      "caught": 0,
+      "steps": 111,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 1.3319156268406036,
+          "target": 1.3319156268406036
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 118.10339328220913,
+      "q_max_abs": 244.40223693847656,
+      "loss": 12.772619485855103,
+      "n_updates": 56,
+      "f5_rows": 0
+    },
+    {
+      "episode": 65,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 57.345415874716906,
+      "caught": 0,
+      "steps": 93,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.2179311971356154,
+          "target": 0.2179311971356154
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 117.29132710332456,
+      "q_max_abs": 245.58970642089844,
+      "loss": 12.604114957477735,
+      "n_updates": 46,
+      "f5_rows": 0
+    },
+    {
+      "episode": 66,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 899.6273099600492,
+      "caught": 1,
+      "steps": 186,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 3.3104067131411674,
+          "target": 3.3104067131411674
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 120.29642379924815,
+      "q_max_abs": 249.9608917236328,
+      "loss": 12.461136694877379,
+      "n_updates": 93,
+      "f5_rows": 0
+    },
+    {
+      "episode": 67,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 983.6993905124897,
+      "caught": 1,
+      "steps": 172,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 1.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 1,
+          "pre_mean": 5.293179097506679,
+          "target": 5.293179097506679
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 122.44491878775663,
+      "q_max_abs": 253.54586791992188,
+      "loss": 12.230660299922144,
+      "n_updates": 86,
+      "f5_rows": 0
+    },
+    {
+      "episode": 68,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 83.50584938576995,
+      "caught": 0,
+      "steps": 76,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 1.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 1,
+          "pre_mean": 0.2504227137951126,
+          "target": 0.2504227137951126
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 122.87413767764443,
+      "q_max_abs": 252.65379333496094,
+      "loss": 12.646018166291086,
+      "n_updates": 38,
+      "f5_rows": 0
+    },
+    {
+      "episode": 69,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 33.804242057977106,
+      "caught": 0,
+      "steps": 97,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.3718431588948854,
+          "target": 0.3718431588948854
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 123.60258779720384,
+      "q_max_abs": 254.0569610595703,
+      "loss": 12.51440212677936,
+      "n_updates": 49,
+      "f5_rows": 0
+    },
+    {
+      "episode": 70,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 942.0483282551713,
+      "caught": 1,
+      "steps": 214,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.37340890361807166,
+          "target": 0.37340890361807166
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 124.72215691682334,
+      "q_max_abs": 256.2957458496094,
+      "loss": 12.618379958322116,
+      "n_updates": 107,
+      "f5_rows": 0
+    },
+    {
+      "episode": 71,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 987.9696547622123,
+      "caught": 1,
+      "steps": 183,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 4.486255759157217,
+          "target": 4.486255759157217
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 126.44462157867767,
+      "q_max_abs": 257.63006591796875,
+      "loss": 12.89866713639144,
+      "n_updates": 91,
+      "f5_rows": 0
+    },
+    {
+      "episode": 72,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": -17.891877264821574,
+      "caught": 0,
+      "steps": 39,
+      "transitions": 0,
+      "adaptation_status": "no-post",
+      "adaptation_time": null,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "no-post",
+          "value": null,
+          "pre_mean": null,
+          "target": null
+        }
+      ],
+      "n_ok": 0,
+      "n_censored": 0,
+      "n_no_post": 1,
+      "n_short_base": 0,
+      "q_mean_abs": 126.85021438598633,
+      "q_max_abs": 257.39178466796875,
+      "loss": 13.14527850151062,
+      "n_updates": 20,
+      "f5_rows": 0
+    },
+    {
+      "episode": 73,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 78.7840989534085,
+      "caught": 0,
+      "steps": 96,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.38720971390268866,
+          "target": 0.38720971390268866
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 129.05597591400146,
+      "q_max_abs": 261.2925720214844,
+      "loss": 13.285672128200531,
+      "n_updates": 48,
+      "f5_rows": 0
+    },
+    {
+      "episode": 74,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 926.9434371977015,
+      "caught": 1,
+      "steps": 229,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.17671580448166707,
+          "target": 0.17671580448166707
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 130.84827469942863,
+      "q_max_abs": 263.6964416503906,
+      "loss": 12.759661837628013,
+      "n_updates": 114,
+      "f5_rows": 0
+    },
+    {
+      "episode": 75,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 959.2900952045418,
+      "caught": 1,
+      "steps": 170,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 5.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 5,
+          "pre_mean": 5.231515772234021,
+          "target": 5.231515772234021
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 132.35478740018957,
+      "q_max_abs": 265.2649230957031,
+      "loss": 12.432277825299431,
+      "n_updates": 85,
+      "f5_rows": 0
+    },
+    {
+      "episode": 76,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 213.07821543563523,
+      "caught": 0,
+      "steps": 400,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 8.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 8,
+          "pre_mean": -0.030001499093957062,
+          "target": -0.030001499093957062
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 134.38526012420655,
+      "q_max_abs": 270.54351806640625,
+      "loss": 12.531765124797822,
+      "n_updates": 200,
+      "f5_rows": 0
+    },
+    {
+      "episode": 77,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 18.149200797569463,
+      "caught": 0,
+      "steps": 92,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.09452207236775842,
+          "target": 0.09452207236775842
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 134.34537920744523,
+      "q_max_abs": 268.45770263671875,
+      "loss": 12.089848953744639,
+      "n_updates": 46,
+      "f5_rows": 0
+    },
+    {
+      "episode": 78,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 975.2612579492431,
+      "caught": 1,
+      "steps": 200,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 1.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 1,
+          "pre_mean": 0.37264848639840253,
+          "target": 0.37264848639840253
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 135.76624794006347,
+      "q_max_abs": 275.1748046875,
+      "loss": 12.44495246887207,
+      "n_updates": 100,
+      "f5_rows": 0
+    },
+    {
+      "episode": 79,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 1045.6547590198843,
+      "caught": 1,
+      "steps": 338,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.3225598547840132,
+          "target": 0.3225598547840132
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 138.53757932764537,
+      "q_max_abs": 278.3356628417969,
+      "loss": 12.872310658178385,
+      "n_updates": 169,
+      "f5_rows": 0
+    },
+    {
+      "episode": 80,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 913.2340077569689,
+      "caught": 1,
+      "steps": 188,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 2.0238898824247022,
+          "target": 2.0238898824247022
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 141.15437300661776,
+      "q_max_abs": 278.1265563964844,
+      "loss": 12.772011325714436,
+      "n_updates": 94,
+      "f5_rows": 0
+    },
+    {
+      "episode": 81,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 12.824329119723402,
+      "caught": 0,
+      "steps": 91,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.23298081246399333,
+          "target": 0.23298081246399333
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 141.3195223600968,
+      "q_max_abs": 280.3811950683594,
+      "loss": 12.769862413406372,
+      "n_updates": 46,
+      "f5_rows": 0
+    },
+    {
+      "episode": 82,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 907.82890799707,
+      "caught": 1,
+      "steps": 203,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 1.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 1,
+          "pre_mean": 0.1720312330990474,
+          "target": 0.1720312330990474
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 143.33289208742653,
+      "q_max_abs": 281.65924072265625,
+      "loss": 12.499260911847106,
+      "n_updates": 101,
+      "f5_rows": 0
+    },
+    {
+      "episode": 83,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 957.4614338621785,
+      "caught": 1,
+      "steps": 158,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 5.27801657673758,
+          "target": 5.27801657673758
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 146.10606925095183,
+      "q_max_abs": 287.1453552246094,
+      "loss": 12.74180068245417,
+      "n_updates": 79,
+      "f5_rows": 0
+    },
+    {
+      "episode": 84,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 870.0128267353601,
+      "caught": 1,
+      "steps": 184,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 1.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 1,
+          "pre_mean": 3.683941198559816,
+          "target": 3.683941198559816
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 147.76734410161558,
+      "q_max_abs": 288.3169250488281,
+      "loss": 12.556440742119499,
+      "n_updates": 92,
+      "f5_rows": 0
+    },
+    {
+      "episode": 85,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": 4.720318577085777,
+      "caught": 0,
+      "steps": 92,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.17894351697230879,
+          "target": 0.17894351697230879
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 149.0160028208857,
+      "q_max_abs": 289.6189270019531,
+      "loss": 12.75771433374156,
+      "n_updates": 46,
+      "f5_rows": 0
+    },
+    {
+      "episode": 86,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 930.2034322262384,
+      "caught": 1,
+      "steps": 195,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 1.1804513081929744,
+          "target": 1.1804513081929744
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 149.16148002780213,
+      "q_max_abs": 290.4657287597656,
+      "loss": 12.946540491921562,
+      "n_updates": 98,
+      "f5_rows": 0
+    },
+    {
+      "episode": 87,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 967.6776511874552,
+      "caught": 1,
+      "steps": 208,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 1.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 1,
+          "pre_mean": 0.22729060906317416,
+          "target": 0.22729060906317416
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 151.42821488013635,
+      "q_max_abs": 292.7366027832031,
+      "loss": 12.471114864716164,
+      "n_updates": 104,
+      "f5_rows": 0
+    },
+    {
+      "episode": 88,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 886.484223438978,
+      "caught": 1,
+      "steps": 192,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 2.1964351245550082,
+          "target": 2.1964351245550082
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 153.2849761644999,
+      "q_max_abs": 293.86639404296875,
+      "loss": 12.581989591320356,
+      "n_updates": 96,
+      "f5_rows": 0
+    },
+    {
+      "episode": 89,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": -31.551030347123195,
+      "caught": 0,
+      "steps": 95,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.1287990743829021,
+          "target": 0.1287990743829021
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 154.183864187687,
+      "q_max_abs": 296.470703125,
+      "loss": 12.169862087736739,
+      "n_updates": 47,
+      "f5_rows": 0
+    },
+    {
+      "episode": 90,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 953.2719219838755,
+      "caught": 1,
+      "steps": 200,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.1683952299821611,
+          "target": 0.1683952299821611
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 157.96733123779296,
+      "q_max_abs": 300.16693115234375,
+      "loss": 12.142126326560975,
+      "n_updates": 100,
+      "f5_rows": 0
+    },
+    {
+      "episode": 91,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 971.2727504964632,
+      "caught": 1,
+      "steps": 197,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 2.4150300248153607,
+          "target": 2.4150300248153607
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 159.31631438900726,
+      "q_max_abs": 298.9931640625,
+      "loss": 12.51171836949358,
+      "n_updates": 99,
+      "f5_rows": 0
+    },
+    {
+      "episode": 92,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 535.698168243043,
+      "caught": 0,
+      "steps": 162,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 3.3633290962594105,
+          "target": 3.3633290962594105
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 159.44323673954716,
+      "q_max_abs": 303.3966979980469,
+      "loss": 12.369608873202477,
+      "n_updates": 81,
+      "f5_rows": 0
+    },
+    {
+      "episode": 93,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": -64.83714389469033,
+      "caught": 0,
+      "steps": 83,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.38855379368948856,
+          "target": 0.38855379368948856
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 160.79332528463223,
+      "q_max_abs": 301.7626037597656,
+      "loss": 12.400537444324028,
+      "n_updates": 41,
+      "f5_rows": 0
+    },
+    {
+      "episode": 94,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 920.1329309384863,
+      "caught": 1,
+      "steps": 221,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.24725581671234628,
+          "target": 0.24725581671234628
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 161.69852096970016,
+      "q_max_abs": 304.101318359375,
+      "loss": 12.580435228777361,
+      "n_updates": 111,
+      "f5_rows": 0
+    },
+    {
+      "episode": 95,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 939.9982750512781,
+      "caught": 1,
+      "steps": 185,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 3.7988860347256916,
+          "target": 3.7988860347256916
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 164.9861481708029,
+      "q_max_abs": 309.1261291503906,
+      "loss": 12.660788748575294,
+      "n_updates": 92,
+      "f5_rows": 0
+    },
+    {
+      "episode": 96,
+      "start_label": "aggressive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "defensive"
+        }
+      ],
+      "reward": 888.5755043769319,
+      "caught": 1,
+      "steps": 183,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 2.947510169931518,
+          "target": 2.947510169931518
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 166.04100700046706,
+      "q_max_abs": 310.4885559082031,
+      "loss": 12.994961691939313,
+      "n_updates": 92,
+      "f5_rows": 0
+    },
+    {
+      "episode": 97,
+      "start_label": "defensive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "aggressive"
+        }
+      ],
+      "reward": -51.05865462757292,
+      "caught": 0,
+      "steps": 85,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 0.30726912274453044,
+          "target": 0.30726912274453044
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 168.02908906482514,
+      "q_max_abs": 310.7841796875,
+      "loss": 12.792036669594902,
+      "n_updates": 42,
+      "f5_rows": 0
+    },
+    {
+      "episode": 98,
+      "start_label": "evasive",
+      "switches": [
+        {
+          "step": 40,
+          "to": "balanced"
+        }
+      ],
+      "reward": 962.4013659012937,
+      "caught": 1,
+      "steps": 188,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 0.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 0,
+          "pre_mean": 3.2254649951006464,
+          "target": 3.2254649951006464
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 167.32625514902966,
+      "q_max_abs": 310.52911376953125,
+      "loss": 12.352304133963077,
+      "n_updates": 94,
+      "f5_rows": 0
+    },
+    {
+      "episode": 99,
+      "start_label": "balanced",
+      "switches": [
+        {
+          "step": 40,
+          "to": "evasive"
+        }
+      ],
+      "reward": 939.1342179415167,
+      "caught": 1,
+      "steps": 180,
+      "transitions": 0,
+      "adaptation_status": "ok",
+      "adaptation_time": 3.0,
+      "adaptation_details": [
+        {
+          "switch_step": 40,
+          "status": "ok",
+          "value": 3,
+          "pre_mean": 5.286340198297848,
+          "target": 5.286340198297848
+        }
+      ],
+      "n_ok": 1,
+      "n_censored": 0,
+      "n_no_post": 0,
+      "n_short_base": 0,
+      "q_mean_abs": 170.84808366563584,
+      "q_max_abs": 313.875,
+      "loss": 12.467502986060248,
+      "n_updates": 90,
+      "f5_rows": 0
+    }
+  ],
+  "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\cal-hp80-single200k-seed0.pt",
+  "elapsed_s": 121.22277212142944
+}

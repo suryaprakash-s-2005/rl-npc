@@ -1,0 +1,1057 @@
+{
+  "n_cells": 36,
+  "table2": [
+    {
+      "cond": "off",
+      "metric": "offline",
+      "single_mean": 0.9305555555555555,
+      "partitioned_mean": 0.8055555555555555,
+      "delta": -0.12499999999999999,
+      "ci_low": -0.19444444444444442,
+      "ci_high": -0.055555555555555546,
+      "p_wilcoxon": 0.125,
+      "p_bootstrap": 0.0027434842249657062,
+      "median_diff": -0.16666666666666663,
+      "cohen_dz": -1.224744871391589,
+      "mde_80": 0.1167327174213737,
+      "tost_0.05": {
+        "p_value": 0.9341212083645538,
+        "equivalent": false,
+        "margin": 0.05
+      },
+      "n": 6,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "single": [
+        0.9166666666666666,
+        0.8333333333333334,
+        0.9166666666666666,
+        0.9166666666666666,
+        1.0,
+        1.0
+      ],
+      "partitioned": [
+        0.75,
+        0.8333333333333334,
+        0.9166666666666666,
+        0.75,
+        0.8333333333333334,
+        0.75
+      ],
+      "p_holm": 0.5
+    },
+    {
+      "cond": "off",
+      "metric": "online",
+      "single_mean": 0.763888888888889,
+      "partitioned_mean": 0.736111111111111,
+      "delta": -0.02777777777777779,
+      "ci_low": -0.22222222222222224,
+      "ci_high": 0.15277777777777776,
+      "p_wilcoxon": 1.0,
+      "p_bootstrap": 0.7795781893004116,
+      "median_diff": 0.04166666666666663,
+      "cohen_dz": -0.10403129732205994,
+      "mde_80": 0.30539484145778334,
+      "tost_0.05": {
+        "p_value": 0.423250664068248,
+        "equivalent": false,
+        "margin": 0.05
+      },
+      "n": 6,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "single": [
+        0.8333333333333334,
+        0.9166666666666666,
+        0.5833333333333334,
+        0.8333333333333334,
+        0.6666666666666666,
+        0.75
+      ],
+      "partitioned": [
+        0.5833333333333334,
+        0.5,
+        0.9166666666666666,
+        0.9166666666666666,
+        0.75,
+        0.75
+      ],
+      "p_holm": 1.0
+    },
+    {
+      "cond": "on",
+      "metric": "offline",
+      "single_mean": 0.6944444444444443,
+      "partitioned_mean": 0.8055555555555555,
+      "delta": 0.11111111111111109,
+      "ci_low": -0.041666666666666664,
+      "ci_high": 0.31944444444444436,
+      "p_wilcoxon": 0.5,
+      "p_bootstrap": 0.2674039780521262,
+      "median_diff": 0.04166666666666663,
+      "cohen_dz": 0.44280744277004763,
+      "mde_80": 0.2869926607698567,
+      "tost_0.05": {
+        "p_value": 0.7116082444948746,
+        "equivalent": false,
+        "margin": 0.05
+      },
+      "n": 6,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "single": [
+        0.8333333333333334,
+        0.9166666666666666,
+        0.08333333333333333,
+        0.8333333333333334,
+        0.75,
+        0.75
+      ],
+      "partitioned": [
+        0.9166666666666666,
+        0.8333333333333334,
+        0.6666666666666666,
+        0.75,
+        0.9166666666666666,
+        0.75
+      ],
+      "p_holm": 1.0
+    },
+    {
+      "cond": "on",
+      "metric": "online",
+      "single_mean": 0.5277777777777778,
+      "partitioned_mean": 0.638888888888889,
+      "delta": 0.11111111111111112,
+      "ci_low": -0.2638888888888889,
+      "ci_high": 0.4444444444444445,
+      "p_wilcoxon": 0.5625,
+      "p_bootstrap": 0.5385802469135802,
+      "median_diff": 0.08333333333333337,
+      "cohen_dz": 0.2190014399392014,
+      "mde_80": 0.5802815097679372,
+      "tost_0.05": {
+        "p_value": 0.6100902663270295,
+        "equivalent": false,
+        "margin": 0.05
+      },
+      "n": 6,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "single": [
+        0.9166666666666666,
+        0.75,
+        0.0,
+        0.6666666666666666,
+        0.08333333333333333,
+        0.75
+      ],
+      "partitioned": [
+        1.0,
+        0.75,
+        0.5833333333333334,
+        0.75,
+        0.75,
+        0.0
+      ],
+      "p_holm": 1.0
+    }
+  ],
+  "f4": [
+    {
+      "cond": "off",
+      "metric": "offline",
+      "single200k_mean": 0.9305555555555555,
+      "single50k_mean": 0.9166666666666669,
+      "delta_50k_minus_200k": -0.013888888888888876,
+      "ci_low": -0.1527777777777778,
+      "ci_high": 0.09722222222222222,
+      "p_wilcoxon": 0.75,
+      "n": 6
+    },
+    {
+      "cond": "off",
+      "metric": "online",
+      "single200k_mean": 0.763888888888889,
+      "single50k_mean": 0.6527777777777778,
+      "delta_50k_minus_200k": -0.1111111111111111,
+      "ci_low": -0.23611111111111113,
+      "ci_high": 0.027777777777777762,
+      "p_wilcoxon": 0.15625,
+      "n": 6
+    },
+    {
+      "cond": "on",
+      "metric": "offline",
+      "single200k_mean": 0.6944444444444443,
+      "single50k_mean": 0.6805555555555555,
+      "delta_50k_minus_200k": -0.013888888888888867,
+      "ci_low": -0.05555555555555553,
+      "ci_high": 0.027777777777777807,
+      "p_wilcoxon": 1.0,
+      "n": 6
+    },
+    {
+      "cond": "on",
+      "metric": "online",
+      "single200k_mean": 0.5277777777777778,
+      "single50k_mean": 0.6527777777777778,
+      "delta_50k_minus_200k": 0.125,
+      "ci_low": 0.0,
+      "ci_high": 0.34722222222222215,
+      "p_wilcoxon": 0.5,
+      "n": 6
+    }
+  ],
+  "f6": {
+    "cells": 72,
+    "episodes": 864,
+    "no_post": 1,
+    "short_base": 0,
+    "censored": 7,
+    "ok": 856
+  },
+  "f5": [
+    {
+      "tag": "single200k-gt-off-ep400-sw40-seed0",
+      "arm": "single200k",
+      "cond": "off",
+      "seed": 0,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.2,
+          "q_mean_abs": 67.41046534462278,
+          "q_max_abs": 215.48568725585938
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.74,
+          "q_mean_abs": 136.54508196579621,
+          "q_max_abs": 319.97625732421875
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.76,
+          "q_mean_abs": 187.35591291283666,
+          "q_max_abs": 384.4117431640625
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.88,
+          "q_mean_abs": 235.40557800080194,
+          "q_max_abs": 431.8265380859375
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.82,
+          "q_mean_abs": 281.2363125545013,
+          "q_max_abs": 461.7266540527344
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.84,
+          "q_mean_abs": 321.2961582937673,
+          "q_max_abs": 483.3274230957031
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.88,
+          "q_mean_abs": 358.680413214242,
+          "q_max_abs": 499.3613586425781
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.86,
+          "q_mean_abs": 393.74156015790925,
+          "q_max_abs": 532.6519165039062
+        }
+      ],
+      "first_block_q_mean": 67.41046534462278,
+      "max_q_mean": 412.106203109499,
+      "onset_q_gt_1000": null,
+      "final_catch_rate": 0.86
+    },
+    {
+      "tag": "partitioned-gt-off-ep400-sw40-seed0",
+      "arm": "partitioned",
+      "cond": "off",
+      "seed": 0,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.16,
+          "q_mean_abs": 68.72418135466182,
+          "q_max_abs": 220.65066528320312
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.84,
+          "q_mean_abs": 145.19378599691834,
+          "q_max_abs": 316.6478576660156
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.86,
+          "q_mean_abs": 194.48513770934542,
+          "q_max_abs": 370.8423156738281
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.86,
+          "q_mean_abs": 238.2493425268592,
+          "q_max_abs": 411.1921081542969
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.9,
+          "q_mean_abs": 278.5395624561851,
+          "q_max_abs": 442.5355224609375
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.92,
+          "q_mean_abs": 315.3279739685585,
+          "q_max_abs": 467.56085205078125
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.92,
+          "q_mean_abs": 348.3328594197607,
+          "q_max_abs": 487.48638916015625
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.86,
+          "q_mean_abs": 378.75080768794237,
+          "q_max_abs": 521.5348510742188
+        }
+      ],
+      "first_block_q_mean": 68.72418135466182,
+      "max_q_mean": 398.6350724729773,
+      "onset_q_gt_1000": null,
+      "final_catch_rate": 0.86
+    },
+    {
+      "tag": "single50k-gt-off-ep400-sw40-seed0",
+      "arm": "single50k",
+      "cond": "off",
+      "seed": 0,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.2,
+          "q_mean_abs": 67.41046534462278,
+          "q_max_abs": 215.48568725585938
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.74,
+          "q_mean_abs": 136.54508196579621,
+          "q_max_abs": 319.97625732421875
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.76,
+          "q_mean_abs": 187.35591291283666,
+          "q_max_abs": 384.4117431640625
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.88,
+          "q_mean_abs": 235.40557800080194,
+          "q_max_abs": 431.8265380859375
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.9,
+          "q_mean_abs": 279.3762016211235,
+          "q_max_abs": 460.4215087890625
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.82,
+          "q_mean_abs": 314.3325959003168,
+          "q_max_abs": 484.57568359375
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.82,
+          "q_mean_abs": 366.39432781989285,
+          "q_max_abs": 504.5746154785156
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.86,
+          "q_mean_abs": 415.55916613087425,
+          "q_max_abs": 529.6580810546875
+        }
+      ],
+      "first_block_q_mean": 67.41046534462278,
+      "max_q_mean": 434.4156794054755,
+      "onset_q_gt_1000": null,
+      "final_catch_rate": 0.86
+    },
+    {
+      "tag": "single200k-gt-off-ep400-sw40-seed5",
+      "arm": "single200k",
+      "cond": "off",
+      "seed": 5,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.18,
+          "q_mean_abs": 66.45525546092809,
+          "q_max_abs": 219.1158905029297
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.76,
+          "q_mean_abs": 139.481715441886,
+          "q_max_abs": 317.4097900390625
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.76,
+          "q_mean_abs": 189.53484520308749,
+          "q_max_abs": 375.9230041503906
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.9,
+          "q_mean_abs": 238.0471431602266,
+          "q_max_abs": 421.3470458984375
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.86,
+          "q_mean_abs": 284.3200129906244,
+          "q_max_abs": 456.8291931152344
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.88,
+          "q_mean_abs": 327.165608074313,
+          "q_max_abs": 483.84930419921875
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.9,
+          "q_mean_abs": 367.23847057826146,
+          "q_max_abs": 526.5272216796875
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.88,
+          "q_mean_abs": 403.4473928825679,
+          "q_max_abs": 551.5958251953125
+        }
+      ],
+      "first_block_q_mean": 66.45525546092809,
+      "max_q_mean": 421.06031600288725,
+      "onset_q_gt_1000": null,
+      "final_catch_rate": 0.88
+    },
+    {
+      "tag": "partitioned-gt-off-ep400-sw40-seed5",
+      "arm": "partitioned",
+      "cond": "off",
+      "seed": 5,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.24,
+          "q_mean_abs": 68.38372262833397,
+          "q_max_abs": 207.3614501953125
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.8,
+          "q_mean_abs": 145.79803193765045,
+          "q_max_abs": 303.3432922363281
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.82,
+          "q_mean_abs": 200.20834183539012,
+          "q_max_abs": 366.5123291015625
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.88,
+          "q_mean_abs": 249.84998881040835,
+          "q_max_abs": 417.0223388671875
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.88,
+          "q_mean_abs": 298.03079312073453,
+          "q_max_abs": 454.6562194824219
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.9,
+          "q_mean_abs": 345.8984392446372,
+          "q_max_abs": 485.4389953613281
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.86,
+          "q_mean_abs": 395.08846845112635,
+          "q_max_abs": 544.7681884765625
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.84,
+          "q_mean_abs": 441.83112115745155,
+          "q_max_abs": 558.131591796875
+        }
+      ],
+      "first_block_q_mean": 68.38372262833397,
+      "max_q_mean": 463.84390301174585,
+      "onset_q_gt_1000": null,
+      "final_catch_rate": 0.84
+    },
+    {
+      "tag": "single50k-gt-off-ep400-sw40-seed5",
+      "arm": "single50k",
+      "cond": "off",
+      "seed": 5,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.18,
+          "q_mean_abs": 66.45525546092809,
+          "q_max_abs": 219.1158905029297
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.76,
+          "q_mean_abs": 139.481715441886,
+          "q_max_abs": 317.4097900390625
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.76,
+          "q_mean_abs": 189.53484520308749,
+          "q_max_abs": 375.9230041503906
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.9,
+          "q_mean_abs": 238.0471431602266,
+          "q_max_abs": 421.3470458984375
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.86,
+          "q_mean_abs": 281.838730797082,
+          "q_max_abs": 457.7279357910156
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.88,
+          "q_mean_abs": 320.94371275738,
+          "q_max_abs": 486.6018371582031
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.86,
+          "q_mean_abs": 377.89698047484126,
+          "q_max_abs": 521.3173828125
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.9,
+          "q_mean_abs": 429.5535204688757,
+          "q_max_abs": 556.1195678710938
+        }
+      ],
+      "first_block_q_mean": 66.45525546092809,
+      "max_q_mean": 449.6503005027771,
+      "onset_q_gt_1000": null,
+      "final_catch_rate": 0.9
+    },
+    {
+      "tag": "single200k-gt-on-ep400-sw40-seed0",
+      "arm": "single200k",
+      "cond": "on",
+      "seed": 0,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.4,
+          "q_mean_abs": 63.40406602530655,
+          "q_max_abs": 186.332275390625
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.56,
+          "q_mean_abs": 131.0115565017145,
+          "q_max_abs": 267.32989501953125
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.58,
+          "q_mean_abs": 183.92946740983214,
+          "q_max_abs": 327.325927734375
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.54,
+          "q_mean_abs": 234.35616175347093,
+          "q_max_abs": 369.74664306640625
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.76,
+          "q_mean_abs": 284.87829568920165,
+          "q_max_abs": 406.6756591796875
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.8,
+          "q_mean_abs": 333.3482305294618,
+          "q_max_abs": 447.9820251464844
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.82,
+          "q_mean_abs": 377.34149645498576,
+          "q_max_abs": 503.0399169921875
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.84,
+          "q_mean_abs": 410.5576434196132,
+          "q_max_abs": 525.8084106445312
+        }
+      ],
+      "first_block_q_mean": 63.40406602530655,
+      "max_q_mean": 424.38698757396025,
+      "onset_q_gt_1000": null,
+      "final_catch_rate": 0.84
+    },
+    {
+      "tag": "partitioned-gt-on-ep400-sw40-seed0",
+      "arm": "partitioned",
+      "cond": "on",
+      "seed": 0,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.38,
+          "q_mean_abs": 75.12485469405027,
+          "q_max_abs": 222.84014892578125
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.7,
+          "q_mean_abs": 156.70248841113155,
+          "q_max_abs": 296.635498046875
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.68,
+          "q_mean_abs": 209.98935949676576,
+          "q_max_abs": 353.9258117675781
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.64,
+          "q_mean_abs": 258.2913926759764,
+          "q_max_abs": 404.88262939453125
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.68,
+          "q_mean_abs": 303.5192003188266,
+          "q_max_abs": 456.70477294921875
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.7,
+          "q_mean_abs": 342.67872235071394,
+          "q_max_abs": 489.6971435546875
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.88,
+          "q_mean_abs": 376.65349973881797,
+          "q_max_abs": 519.9356689453125
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.94,
+          "q_mean_abs": 406.78254981634814,
+          "q_max_abs": 548.4006958007812
+        }
+      ],
+      "first_block_q_mean": 75.12485469405027,
+      "max_q_mean": 421.0622641823509,
+      "onset_q_gt_1000": null,
+      "final_catch_rate": 0.94
+    },
+    {
+      "tag": "single50k-gt-on-ep400-sw40-seed0",
+      "arm": "single50k",
+      "cond": "on",
+      "seed": 0,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.4,
+          "q_mean_abs": 63.40406602530655,
+          "q_max_abs": 186.332275390625
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.56,
+          "q_mean_abs": 131.0115565017145,
+          "q_max_abs": 267.32989501953125
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.58,
+          "q_mean_abs": 183.92946740983214,
+          "q_max_abs": 327.325927734375
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.54,
+          "q_mean_abs": 234.35616175347093,
+          "q_max_abs": 369.74664306640625
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.74,
+          "q_mean_abs": 284.67230171936865,
+          "q_max_abs": 405.82550048828125
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.88,
+          "q_mean_abs": 330.75441428784796,
+          "q_max_abs": 447.65216064453125
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.88,
+          "q_mean_abs": 375.46789138406245,
+          "q_max_abs": 494.92303466796875
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.86,
+          "q_mean_abs": 417.05248896863515,
+          "q_max_abs": 517.5671997070312
+        }
+      ],
+      "first_block_q_mean": 63.40406602530655,
+      "max_q_mean": 431.3994178249411,
+      "onset_q_gt_1000": null,
+      "final_catch_rate": 0.86
+    },
+    {
+      "tag": "single200k-gt-on-ep400-sw40-seed5",
+      "arm": "single200k",
+      "cond": "on",
+      "seed": 5,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.04,
+          "q_mean_abs": 253.36353477675405,
+          "q_max_abs": 1836.80712890625
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.48,
+          "q_mean_abs": 841.0403397189237,
+          "q_max_abs": 1839.297607421875
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.42,
+          "q_mean_abs": 971.721501055972,
+          "q_max_abs": 1541.58447265625
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.4,
+          "q_mean_abs": 1008.3876386538285,
+          "q_max_abs": 1476.1181640625
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.58,
+          "q_mean_abs": 919.834558041261,
+          "q_max_abs": 1355.719970703125
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.66,
+          "q_mean_abs": 820.1090607719111,
+          "q_max_abs": 1122.877197265625
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.6,
+          "q_mean_abs": 740.3833426490908,
+          "q_max_abs": 968.6581420898438
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.76,
+          "q_mean_abs": 676.6417028153244,
+          "q_max_abs": 859.506591796875
+        }
+      ],
+      "first_block_q_mean": 253.36353477675405,
+      "max_q_mean": 1023.5050820404629,
+      "onset_q_gt_1000": 140,
+      "final_catch_rate": 0.76
+    },
+    {
+      "tag": "partitioned-gt-on-ep400-sw40-seed5",
+      "arm": "partitioned",
+      "cond": "on",
+      "seed": 5,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.36,
+          "q_mean_abs": 68.39967964988226,
+          "q_max_abs": 210.88748168945312
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.8,
+          "q_mean_abs": 142.94674022278784,
+          "q_max_abs": 297.6694030761719
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.76,
+          "q_mean_abs": 193.0607130988154,
+          "q_max_abs": 357.32421875
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.88,
+          "q_mean_abs": 238.50958677354822,
+          "q_max_abs": 417.843505859375
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.9,
+          "q_mean_abs": 280.99166399619804,
+          "q_max_abs": 498.7994689941406
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.84,
+          "q_mean_abs": 320.66725012769183,
+          "q_max_abs": 508.4632873535156
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.86,
+          "q_mean_abs": 357.78487029823236,
+          "q_max_abs": 528.65869140625
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.9,
+          "q_mean_abs": 392.4877799232693,
+          "q_max_abs": 547.59619140625
+        }
+      ],
+      "first_block_q_mean": 68.39967964988226,
+      "max_q_mean": 412.9301982678865,
+      "onset_q_gt_1000": null,
+      "final_catch_rate": 0.9
+    },
+    {
+      "tag": "single50k-gt-on-ep400-sw40-seed5",
+      "arm": "single50k",
+      "cond": "on",
+      "seed": 5,
+      "blocks": [
+        {
+          "start": 0,
+          "end": 49,
+          "catch_rate": 0.04,
+          "q_mean_abs": 253.36353477675405,
+          "q_max_abs": 1836.80712890625
+        },
+        {
+          "start": 50,
+          "end": 99,
+          "catch_rate": 0.48,
+          "q_mean_abs": 841.0403397189237,
+          "q_max_abs": 1839.297607421875
+        },
+        {
+          "start": 100,
+          "end": 149,
+          "catch_rate": 0.42,
+          "q_mean_abs": 971.721501055972,
+          "q_max_abs": 1541.58447265625
+        },
+        {
+          "start": 150,
+          "end": 199,
+          "catch_rate": 0.48,
+          "q_mean_abs": 1006.7994917060552,
+          "q_max_abs": 1476.1181640625
+        },
+        {
+          "start": 200,
+          "end": 249,
+          "catch_rate": 0.7,
+          "q_mean_abs": 907.8573347860813,
+          "q_max_abs": 1348.3221435546875
+        },
+        {
+          "start": 250,
+          "end": 299,
+          "catch_rate": 0.72,
+          "q_mean_abs": 817.6023785390214,
+          "q_max_abs": 1131.3876953125
+        },
+        {
+          "start": 300,
+          "end": 349,
+          "catch_rate": 0.68,
+          "q_mean_abs": 740.6549046058338,
+          "q_max_abs": 986.8692626953125
+        },
+        {
+          "start": 350,
+          "end": 399,
+          "catch_rate": 0.76,
+          "q_mean_abs": 669.1817731211397,
+          "q_max_abs": 861.7557983398438
+        }
+      ],
+      "first_block_q_mean": 253.36353477675405,
+      "max_q_mean": 1023.5050820404629,
+      "onset_q_gt_1000": 140,
+      "final_catch_rate": 0.76
+    }
+  ]
+}

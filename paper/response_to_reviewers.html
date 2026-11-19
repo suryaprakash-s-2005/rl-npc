@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Response to Reviewers</title>
+<style>
+  @page { size: Letter; margin: 0.72in 0.78in; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Times New Roman", Times, serif; font-size: 10.2pt; line-height: 1.28; color: #111; }
+  h1 { font-size: 16pt; text-align: center; margin: 0 0 4pt; font-weight: bold; }
+  .sub { text-align: center; font-size: 10pt; margin: 0 0 2pt; }
+  .meta { text-align: center; font-size: 9pt; color: #333; margin: 0 0 14pt; }
+  h2 { font-size: 11.5pt; margin: 14pt 0 5pt; border-bottom: 0.7pt solid #999; padding-bottom: 2pt; }
+  h3 { font-size: 10.6pt; margin: 11pt 0 3pt; }
+  p { margin: 0 0 5pt; text-align: justify; }
+  ul { margin: 2pt 0 6pt 16pt; padding: 0; }
+  li { margin: 0 0 2.5pt; text-align: justify; }
+  .comment { background: #f2f2f2; border-left: 3pt solid #777; padding: 5pt 7pt; margin: 4pt 0 6pt; font-style: italic; }
+  .label { font-weight: bold; font-style: normal; }
+  table { width: 100%; border-collapse: collapse; font-size: 8.8pt; margin: 4pt 0 7pt; }
+  th, td { border-bottom: 0.45pt solid #bbb; padding: 2.2pt 3pt; vertical-align: top; }
+  th { border-top: 0.8pt solid #000; border-bottom: 0.8pt solid #000; text-align: left; font-weight: bold; }
+  .num { text-align: center; white-space: nowrap; }
+  .caption { font-size: 8.6pt; color: #333; margin: -2pt 0 7pt; }
+  .small { font-size: 9.2pt; }
+  .keep { break-inside: avoid; }
+  .pagebreak { break-before: page; }
+</style>
+</head>
+<body>
+
+<h1>Response to Reviewers</h1>
+<div class="sub"><b>Auditing Strategy-Conditioned Experience Replay for Reinforcement Learning Non-Player Characters: A Pre-Registered Negative Result</b></div>
+<div class="meta">Revised manuscript and point-by-point response</div>
+
+<h2>Summary of changes</h2>
+<ul>
+  <li><b>Protocol and statistics.</b> The deciding run now follows the pairwise switch schedule specified in the paper, uses replay seed offset 0, player HP 60, and switch step 40. The exact Wilcoxon implementation was corrected from a signed-rank sum to the positive-rank sum; all Table II p-values and Holm values were recomputed.</li>
+  <li><b>Scope and generalization.</b> The manuscript now states the boundary of the claim explicitly: one arena, one Double DQN architecture, four canonical personalities plus two evaluation opponents, one switch per episode, and six paired seeds. We do not claim a general failure of partitioned replay.</li>
+  <li><b>Provenance and artifact.</b> The manuscript separately labels corrected-grid results, archival results, and printed-only/non-regenerable values. The revised artifact contains code, configs, corrected checkpoints, per-episode logs, cell JSONs, analysis scripts, F5/F7 diagnostics, and a reconstructed protocol record. The original timestamped pre-registration file was not retained, and the manuscript now says so.</li>
+  <li><b>F5 mechanism.</b> The oracle-label collapse is now reported in corrected scope: seed 2, single-buffer arms, with onset episodes and catch-rate controls. We state that the logs localize the failure but do not establish a causal mechanism.</li>
+  <li><b>Classifier analysis.</b> A new inference-only rerun of the saved classifier quantifies the failure mode: confident collapse onto the balanced class and zero evasive recall, not uniform degradation.</li>
+  <li><b>Statistical resolution.</b> A new table reports MDE<sub>80</sub> and TOST results for every Table II comparison. The null result is framed as failure to detect a benefit, not proof of equivalence.</li>
+</ul>
+
+<h2>Point-by-point responses</h2>
+
+<h3>1. Scope of experimental validation and generalization</h3>
+<div class="comment">&ldquo;The main concern is the limited scope of experimental validation and the extent to which the reported negative findings can be generalized. The experiments use a single combat environment, one Double DQN architecture, six paired seeds, and a restricted set of opponent personalities. The authors should extend the evaluation to additional environments, RL architectures, and more diverse opponent behaviours to establish whether the identified limitations are specific to this implementation or represent broader issues with strategy-conditioned replay.&rdquo;</div>
+<p><span class="label">Response.</span> We agree that the original submission did not bound its claim sharply enough. We have not added new environments or architectures in this revision; instead, we have made the scope limitation explicit and removed any implication of broad generalization. The revised Discussion now identifies each untested dimension and states that extensions to additional arenas, RL architectures, opponent distributions, and switch schedules remain open tests. The negative result is presented as a result about this testbed, not about partitioned replay in general. We also identify the regimes in which partitioning could still help: more frequent switches, longer horizons, weaker or more diverse opponents, and architectures for which replay structure is more central.</p>
+<p><span class="label">Changes.</span> Abstract (p. 1); Section VI-A (p. 5); Section VI-D (p. 5&ndash;6); Conclusion and Future Work (p. 6).</p>
+
+<h3>2. Missing records, checkpoints, provenance, and pre-registration</h3>
+<div class="comment">&ldquo;Furthermore, several original experimental records and checkpoints are unavailable, as acknowledged in Section IV-A (page 3) and Section VI-D (page 6). The authors should clearly distinguish independently reproduced results from values retained from the original manuscript and provide accessible source code, checkpoints, raw episode-level logs, and the pre-registration protocol.&rdquo;</div>
+<p><span class="label">Response.</span> We have made provenance explicit in three classes. <b>Reproduced</b> results come from the corrected 36-cell grid and its retained checkpoints and logs. <b>Archival</b> results are retained for comparison but were not rerun under the corrected schedule; these include the four-cycle/offset-11 runs and the detector-labelled results. <b>Printed-only</b> values, chiefly the Table I repeated-checkpoint rates and the original detector log, are labelled non-regenerable. The revised artifact contains the source, run configs, corrected checkpoints, detector checkpoint, per-episode training and evaluation logs, raw cell JSONs, exact analysis scripts, figure-generation scripts, F5 diagnostics, F7 inference diagnostics, and the reporting checklist.</p>
+<p>We also address a provenance problem in the original wording: the timestamped pre-registration file is not in the surviving artifact set. We no longer imply that it survives. The abstract now refers to a &ldquo;fixed protocol record&rdquo;; Sections IV-A and IV-C state that the original timestamped file was not retained and that the released protocol record is reconstructed from the frozen configs; the Limitations section repeats this. This is weaker than a timestamped pre-registration, and we state that explicitly rather than overclaiming.</p>
+<p><span class="label">Changes.</span> Section IV-A (p. 2); Section IV-C (p. 2&ndash;3); Section VI-C (p. 6); Section VI-D (p. 5&ndash;6); Table I caption (p. 3); artifact <span class="small">README.md</span>, <span class="small">protocol/audit_protocol.md</span>, and <span class="small">MANIFEST.sha256</span>.</p>
+
+<h3>3. Causal explanation of the oracle-label collapse</h3>
+<div class="comment">&ldquo;The causal explanation for the training collapse in Section V-E (pages 4&ndash;5) also requires further investigation, particularly the relationship between oracle-label conditioning and critic value divergence.&rdquo;</div>
+<p><span class="label">Response.</span> We added a focused diagnostic from the existing per-episode logs, without new training. On cond-on seed 2, both single-buffer arms cross mean |Q| &gt; 10<sup>3</sup> at episode 39, &gt; 10<sup>4</sup> at episode 59, and &gt; 10<sup>5</sup> at episode 92; the catch rate is 0 in the first 50 episodes and remains 0.02/0.12 in the last 50. Partitioned replay never crosses 10<sup>3</sup>, ends at 0.80, and peaks at 739. Cond-off seed 2 is healthy in all arms (final catch 0.88&ndash;0.90; peak |Q| 391&ndash;428).</p>
+<table class="keep">
+<caption class="caption"><b>Response Table 1.</b> F5 diagnostics from existing corrected-grid logs; catch rates are fractions of 50-episode blocks.</caption>
+<thead><tr><th>Condition / arm</th><th class="num">First-50 catch</th><th class="num">Last-50 catch</th><th class="num">First |Q|&gt;10<sup>3</sup></th><th class="num">Max mean |Q|</th></tr></thead>
+<tbody>
+<tr><td>cond-on, single200k</td><td class="num">0.00</td><td class="num">0.02</td><td class="num">ep. 39</td><td class="num">5.3&times;10<sup>5</sup></td></tr>
+<tr><td>cond-on, single50k</td><td class="num">0.00</td><td class="num">0.12</td><td class="num">ep. 39</td><td class="num">2.1&times;10<sup>5</sup></td></tr>
+<tr><td>cond-on, partitioned</td><td class="num">0.06</td><td class="num">0.80</td><td class="num">never</td><td class="num">739</td></tr>
+<tr><td>cond-off, single200k</td><td class="num">0.22</td><td class="num">0.88</td><td class="num">never</td><td class="num">391</td></tr>
+<tr><td>cond-off, partitioned</td><td class="num">0.28</td><td class="num">0.90</td><td class="num">never</td><td class="num">389</td></tr>
+</tbody>
+</table>
+<p>These records establish temporal coincidence and arm specificity, not causation. We now discuss the candidate mechanism explicitly: the oracle one-hot changes the policy input, hence the visited-state distribution and TD targets; a single buffer mixes transitions from label regimes whose targets differ, while per-strategy partitions separate them. That account is consistent with the arm asymmetry and the cond-off control, but it remains a hypothesis because we did not independently ablate target heterogeneity, and the seed dependence shows the interaction is not deterministic.</p>
+<p><span class="label">Changes.</span> Section V-E (p. 4&ndash;5); Fig. 4 caption (p. 5); <span class="small">results/audit/f5_diagnostics.json</span>; <span class="small">experiments/analyze_f5_diagnostics.py</span>.</p>
+
+<h3>4. Classifier generalization to the deployed opponent</h3>
+<div class="comment">&ldquo;Additionally, the classifier's performance reduction from 0.836 to 0.306 against the deployed opponent highlights a significant generalisation problem that deserves deeper analysis.&rdquo;</div>
+<p><span class="label">Response.</span> We added an inference-only rerun of the saved random-walk-trained classifier over 4,488 held-out windows per opponent. No retraining and no detector-labelled grid were run. Window accuracy is 0.972 on the random-walk opponent and 0.434 on the competent chaser. On the competent chaser, per-class recall is 0.749 aggressive, 0.004 defensive, 0.000 evasive, and 0.983 balanced; expected calibration error rises from 0.007 to 0.532 while mean confidence remains 0.966. The classifier therefore does not degrade uniformly: it confidently collapses onto the balanced class and never predicts evasive. This explains why the deployment pre-switch metric falls to a median of 0.043, below the 0.25 chance rate, and why retraining on the deployment opponent is a local repair: on held-out competent-chaser windows it improves accuracy, but it does not recover a general four-class classifier.</p>
+<table class="keep">
+<caption class="caption"><b>Response Table 2.</b> Inference-only classifier diagnostics; 4,488 windows per opponent, saved checkpoint, no retraining.</caption>
+<thead><tr><th>Diagnostic</th><th class="num">Random-walk</th><th class="num">Competent chaser</th></tr></thead>
+<tbody>
+<tr><td>Window accuracy</td><td class="num">0.972</td><td class="num">0.434</td></tr>
+<tr><td>Macro recall</td><td class="num">0.972</td><td class="num">0.434</td></tr>
+<tr><td>Expected calibration error</td><td class="num">0.007</td><td class="num">0.532</td></tr>
+<tr><td>Mean confidence</td><td class="num">0.974</td><td class="num">0.966</td></tr>
+<tr><td>Recall: aggressive / defensive / evasive / balanced</td><td class="num">.965 / .983 / .970 / .971</td><td class="num">.749 / .004 / .000 / .983</td></tr>
+</tbody>
+</table>
+<p>The previously reported retraining values (window accuracy 0.267&rarr;0.802; episode accuracy 0.306&rarr;0.441; random-walk accuracy 0.836&rarr;0.250) remain archival because the competent-trained checkpoint and its raw logs did not survive. We label them as records and do not present them as a fresh corrected-schedule replication.</p>
+<p><span class="label">Changes.</span> Section V-G (p. 5); Limitations (p. 5&ndash;6); Future Work (p. 6); <span class="small">results/audit/f7/f7_summary.json</span>; <span class="small">experiments/run_audit_f7.py --skip-retrain</span>.</p>
+
+<h3>5. Statistical power with six seeds</h3>
+<div class="comment">&ldquo;The authors should also discuss the statistical power associated with six seeds and clarify the limitations of drawing conclusions from non-significant results.&rdquo;</div>
+<p><span class="label">Response.</span> We added a statistical-resolution table and a direct statement of what the null result does and does not mean. The offline cond-off comparison has MDE<sub>80</sub>=0.117, close to the observed &minus;0.125; the online comparisons are much less resolved (MDE<sub>80</sub>=0.305 and 0.580). None of the four TOST tests establishes equivalence within &plusmn;0.05. The revised text therefore states that the data fail to detect a benefit at the observed noise level; they do not establish that partitioned and single replay are equivalent, and they do not prove the absence of a benefit.</p>
+<table class="keep">
+<caption class="caption"><b>Response Table 3.</b> Statistical resolution of the Table II comparisons, n=6 paired seeds.</caption>
+<thead><tr><th>Condition</th><th>Metric</th><th class="num">&Delta;</th><th class="num">MDE<sub>80</sub></th><th class="num">TOST p</th><th class="num">Equivalent &plusmn;0.05?</th></tr></thead>
+<tbody>
+<tr><td>off</td><td>offline</td><td class="num">&minus;0.125</td><td class="num">0.117</td><td class="num">0.934</td><td class="num">no</td></tr>
+<tr><td>off</td><td>online</td><td class="num">&minus;0.028</td><td class="num">0.305</td><td class="num">0.423</td><td class="num">no</td></tr>
+<tr><td>on</td><td>offline</td><td class="num">+0.111</td><td class="num">0.287</td><td class="num">0.712</td><td class="num">no</td></tr>
+<tr><td>on</td><td>online</td><td class="num">+0.111</td><td class="num">0.580</td><td class="num">0.610</td><td class="num">no</td></tr>
+</tbody>
+</table>
+<p><span class="label">Changes.</span> Section V-C and new Table III (p. 4); Section VI-D (p. 5&ndash;6); <span class="small">results/audit/analysis_groundtruth.json</span>.</p>
+
+<h3>6. Protocol changes, player HP, and reproducibility of statistics</h3>
+<div class="comment">&ldquo;Finally, the manuscript would benefit from a clearer explanation of the experimental protocol changes, the selection of player HP, and the reproducibility of the reported statistical calculations.&rdquo;</div>
+<p><span class="label">Response.</span> Section IV-B now includes a compact protocol-delta paragraph: pairwise rather than four-cycle switches; replay seed offset 0 rather than +11; player HP 60 rather than 20; switch step 40 rather than 100; positive-rank rather than signed-sum Wilcoxon; and per-run seeding, collision-free naming, and per-episode logging as supporting infrastructure. Section IV-D gives the full HP sweep and the selection rule: HP 40 was 11/12 with median adaptation 0; HP 60 was the lowest setting with both a non-ceiling win rate and non-degenerate adaptation. The exact analysis path and scripts are released, and every Table II/III value is regenerated from the per-seed records by <span class="small">experiments/analyze_audit.py</span>.</p>
+<p><span class="label">Changes.</span> Section IV-B (p. 2&ndash;3); Section IV-C (p. 3); Section IV-D (p. 3); Table II and Table III (p. 4); <span class="small">src/audit/stats.py</span>; <span class="small">experiments/analyze_audit.py</span>; <span class="small">protocol/audit_protocol.md</span>.</p>
+
+<h2>Residual limitations stated in the revision</h2>
+<ul>
+  <li>Six paired seeds per cell; online intervals are wide, and the null result is a failure to detect a benefit, not proof of absence.</li>
+  <li>No new environments, RL architectures, or opponent distributions were added. The claim is explicitly bounded to the audited testbed.</li>
+  <li>Detector-labelled cells and classifier retraining remain archival and were not rerun under the corrected schedule; only the saved base classifier was re-evaluated without retraining.</li>
+  <li>The original timestamped pre-registration file was not retained; the released protocol record is reconstructed from frozen configs.</li>
+  <li>The original ground-truth/cond-on checkpoints were overwritten, so F5 is characterized only where artifacts survive.</li>
+  <li>The HP sweep is a researcher degree of freedom; the selection rule is reported, but future work should vary HP.</li>
+</ul>
+
+<h2>Artifact</h2>
+<p>The corrected artifact is <span class="small">artifact/audit_artifact.zip</span> (about 15 MB compressed) with <span class="small">README.md</span> and a SHA-256 <span class="small">MANIFEST.sha256</span>. It contains the audited system code, run configs, corrected checkpoints, detector checkpoint, per-episode training/evaluation logs, cell JSONs, exact analysis and figure scripts, the reconstructed protocol record, F5 diagnostics, F7 inference diagnostics, and the retained archival four-cycle runs. Corrected-grid, archival, and printed-only values are labelled separately.</p>
+
+</body>
+</html>

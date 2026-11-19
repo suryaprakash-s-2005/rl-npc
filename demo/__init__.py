@@ -1,0 +1,1 @@
+"""Interactive human-vs-NPC demo package for the chase game."""

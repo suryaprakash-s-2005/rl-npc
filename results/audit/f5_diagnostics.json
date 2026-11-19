@@ -1,0 +1,214 @@
+{
+  "on-seed2-single200k": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.0,
+    "last_50_catch_rate": 0.02,
+    "final_catch_rate": 0.02,
+    "q_first": 1.0133231911994516,
+    "q_max": 527583.4607843137,
+    "q_last": 481484.3409375,
+    "final_caught": 0,
+    "onset_episodes": {
+      "1000": {
+        "episode": 39,
+        "q_mean_abs": 1151.288551940918,
+        "catch_rate_first_50": 0.0
+      },
+      "10000": {
+        "episode": 59,
+        "q_mean_abs": 10104.30927805657,
+        "catch_rate_first_50": 0.0
+      },
+      "100000": {
+        "episode": 92,
+        "q_mean_abs": 105615.8000390625,
+        "catch_rate_first_50": 0.0
+      }
+    }
+  },
+  "on-seed2-single50k": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.0,
+    "last_50_catch_rate": 0.12,
+    "final_catch_rate": 0.12,
+    "q_first": 1.0133231911994516,
+    "q_max": 212931.986171875,
+    "q_last": 30255.9037109375,
+    "final_caught": 0,
+    "onset_episodes": {
+      "1000": {
+        "episode": 39,
+        "q_mean_abs": 1151.288551940918,
+        "catch_rate_first_50": 0.0
+      },
+      "10000": {
+        "episode": 59,
+        "q_mean_abs": 10104.30927805657,
+        "catch_rate_first_50": 0.0
+      },
+      "100000": {
+        "episode": 92,
+        "q_mean_abs": 105615.8000390625,
+        "catch_rate_first_50": 0.0
+      }
+    }
+  },
+  "on-seed2-partitioned": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.06,
+    "last_50_catch_rate": 0.8,
+    "final_catch_rate": 0.8,
+    "q_first": 0.9464542511478067,
+    "q_max": 738.9137573242188,
+    "q_last": 610.5584077835083,
+    "final_caught": 1,
+    "onset_episodes": {
+      "1000": null,
+      "10000": null,
+      "100000": null
+    }
+  },
+  "on-seed5-single200k": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.04,
+    "last_50_catch_rate": 0.76,
+    "final_catch_rate": 0.76,
+    "q_first": 1.0862538373470307,
+    "q_max": 1023.5050820404629,
+    "q_last": 649.9711922093442,
+    "final_caught": 1,
+    "onset_episodes": {
+      "1000": {
+        "episode": 140,
+        "q_mean_abs": 1000.7598495483398,
+        "catch_rate_first_50": 0.04
+      },
+      "10000": null,
+      "100000": null
+    }
+  },
+  "on-seed5-single50k": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.04,
+    "last_50_catch_rate": 0.76,
+    "final_catch_rate": 0.76,
+    "q_first": 1.0862538373470307,
+    "q_max": 1023.5050820404629,
+    "q_last": 638.4100027901786,
+    "final_caught": 1,
+    "onset_episodes": {
+      "1000": {
+        "episode": 140,
+        "q_mean_abs": 1000.7598495483398,
+        "catch_rate_first_50": 0.04
+      },
+      "10000": null,
+      "100000": null
+    }
+  },
+  "on-seed5-partitioned": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.36,
+    "last_50_catch_rate": 0.9,
+    "final_catch_rate": 0.9,
+    "q_first": 1.0026283325627445,
+    "q_max": 412.9301982678865,
+    "q_last": 402.74580475778293,
+    "final_caught": 1,
+    "onset_episodes": {
+      "1000": null,
+      "10000": null,
+      "100000": null
+    }
+  },
+  "off-seed2-single200k": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.22,
+    "last_50_catch_rate": 0.88,
+    "final_catch_rate": 0.88,
+    "q_first": 1.110066878516227,
+    "q_max": 390.63782383018815,
+    "q_last": 390.63782383018815,
+    "final_caught": 1,
+    "onset_episodes": {
+      "1000": null,
+      "10000": null,
+      "100000": null
+    }
+  },
+  "off-seed2-single50k": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.22,
+    "last_50_catch_rate": 0.88,
+    "final_catch_rate": 0.88,
+    "q_first": 1.110066878516227,
+    "q_max": 427.6941231990206,
+    "q_last": 427.6941231990206,
+    "final_caught": 1,
+    "onset_episodes": {
+      "1000": null,
+      "10000": null,
+      "100000": null
+    }
+  },
+  "off-seed2-partitioned": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.28,
+    "last_50_catch_rate": 0.9,
+    "final_catch_rate": 0.9,
+    "q_first": 0.9918760713562369,
+    "q_max": 388.72191532955895,
+    "q_last": 382.78054765973775,
+    "final_caught": 1,
+    "onset_episodes": {
+      "1000": null,
+      "10000": null,
+      "100000": null
+    }
+  },
+  "off-seed5-single200k": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.18,
+    "last_50_catch_rate": 0.88,
+    "final_catch_rate": 0.88,
+    "q_first": 1.0611738963238895,
+    "q_max": 421.06031600288725,
+    "q_last": 420.73417887369794,
+    "final_caught": 1,
+    "onset_episodes": {
+      "1000": null,
+      "10000": null,
+      "100000": null
+    }
+  },
+  "off-seed5-single50k": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.18,
+    "last_50_catch_rate": 0.9,
+    "final_catch_rate": 0.9,
+    "q_first": 1.0611738963238895,
+    "q_max": 449.6503005027771,
+    "q_last": 449.6503005027771,
+    "final_caught": 1,
+    "onset_episodes": {
+      "1000": null,
+      "10000": null,
+      "100000": null
+    }
+  },
+  "off-seed5-partitioned": {
+    "n_episodes": 400,
+    "first_50_catch_rate": 0.24,
+    "last_50_catch_rate": 0.84,
+    "final_catch_rate": 0.84,
+    "q_first": 0.9799097254127264,
+    "q_max": 463.84390301174585,
+    "q_last": 458.7783829538446,
+    "final_caught": 1,
+    "onset_episodes": {
+      "1000": null,
+      "10000": null,
+      "100000": null
+    }
+  }
+}

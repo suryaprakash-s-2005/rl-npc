@@ -1,0 +1,1 @@
+"""Strategy detection & transition detection package."""

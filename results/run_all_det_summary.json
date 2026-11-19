@@ -1,0 +1,30 @@
+[
+  {
+    "variant": "single",
+    "seed": 10,
+    "win": 0.75,
+    "adapt": 41.5,
+    "trans": 1.375
+  },
+  {
+    "variant": "single",
+    "seed": 11,
+    "win": 1.0,
+    "adapt": 30.875,
+    "trans": 1.125
+  },
+  {
+    "variant": "partitioned",
+    "seed": 10,
+    "win": 0.75,
+    "adapt": 6.375,
+    "trans": 1.125
+  },
+  {
+    "variant": "partitioned",
+    "seed": 11,
+    "win": 0.75,
+    "adapt": 23.25,
+    "trans": 1.625
+  }
+]

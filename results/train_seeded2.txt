@@ -1,0 +1,43 @@
+seeded 3593 expert transitions
+ep   0 aggressive reward=  20.4 caught=1 steps=  27 trans=0
+ep  10 aggressive reward=  18.9 caught=1 steps=  24 trans=0
+ep  20 aggressive reward=  21.1 caught=1 steps=  26 trans=0
+ep  30 aggressive reward=   9.2 caught=1 steps=   4 trans=0
+ep  40 defensive reward= -40.1 caught=0 steps= 400 trans=0
+ep  50 defensive reward= -76.3 caught=0 steps= 400 trans=0
+ep  60 defensive reward=-110.6 caught=0 steps= 400 trans=0
+ep  70 defensive reward=-100.4 caught=0 steps= 400 trans=0
+ep  80 evasive   reward=   8.2 caught=1 steps= 209 trans=0
+ep  90 evasive   reward=   9.4 caught=1 steps= 163 trans=0
+ep 100 evasive   reward=  -2.8 caught=1 steps= 184 trans=0
+ep 110 evasive   reward=  -0.6 caught=1 steps= 214 trans=0
+ep 120 balanced  reward=  -4.9 caught=0 steps= 400 trans=0
+ep 130 balanced  reward= -36.5 caught=0 steps= 400 trans=0
+ep 140 balanced  reward= -19.8 caught=0 steps= 400 trans=0
+ep 150 balanced  reward= -14.9 caught=0 steps= 400 trans=0
+ep 160 aggressive reward=   3.8 caught=1 steps=  45 trans=0
+ep 170 aggressive reward=   0.2 caught=1 steps=  91 trans=0
+ep 180 aggressive reward=   9.9 caught=1 steps=  35 trans=0
+ep 190 aggressive reward=   1.5 caught=1 steps=  77 trans=0
+ep 200 defensive reward=-194.2 caught=0 steps= 400 trans=0
+ep 210 defensive reward=-187.1 caught=0 steps= 400 trans=0
+ep 220 defensive reward=-186.5 caught=0 steps= 400 trans=0
+ep 230 defensive reward=-199.5 caught=0 steps= 400 trans=0
+ep 240 evasive   reward=  13.9 caught=1 steps= 155 trans=0
+ep 250 evasive   reward=  17.3 caught=1 steps= 122 trans=0
+ep 260 evasive   reward=   6.9 caught=1 steps= 205 trans=0
+ep 270 evasive   reward=   3.2 caught=1 steps= 159 trans=0
+ep 280 balanced  reward= -27.3 caught=0 steps= 400 trans=0
+ep 290 balanced  reward= -25.9 caught=0 steps= 400 trans=0
+ep 300 balanced  reward= -25.5 caught=0 steps= 400 trans=0
+ep 310 balanced  reward= -27.5 caught=0 steps= 400 trans=0
+ep 320 aggressive reward=  17.3 caught=1 steps=   9 trans=0
+ep 330 aggressive reward=  23.5 caught=1 steps=  26 trans=0
+ep 340 aggressive reward=  -4.6 caught=1 steps=  67 trans=0
+ep 350 aggressive reward=  15.7 caught=1 steps=   5 trans=0
+ep 360 defensive reward=-197.0 caught=0 steps= 400 trans=0
+ep 370 defensive reward=-184.5 caught=0 steps= 400 trans=0
+ep 380 defensive reward=-194.3 caught=0 steps= 400 trans=0
+ep 390 defensive reward=-187.7 caught=0 steps= 400 trans=0
+ep 399 defensive reward=-176.8 caught=0 steps= 400 trans=0
+train done (450.0s) -> data/npc_partitioned-gt-seed0.pt, results/train_partitioned-gt-seed0.json

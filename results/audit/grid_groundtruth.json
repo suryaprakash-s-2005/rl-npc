@@ -1,0 +1,934 @@
+{
+  "rows": [
+    {
+      "tag": "single200k-gt-off-ep400-sw40-seed0",
+      "arm": "single200k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 0,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-off-ep400-sw40-seed0.pt",
+      "offline": {
+        "win_rate": 0.9166666666666666,
+        "mean_adaptation_time": 18.666666666666668,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.8333333333333334,
+        "mean_adaptation_time": 8.083333333333334,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 455.6439778804779,
+      "wall_elapsed_s": 471.558224439621
+    },
+    {
+      "tag": "single200k-gt-off-ep400-sw40-seed1",
+      "arm": "single200k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 1,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-off-ep400-sw40-seed1.pt",
+      "offline": {
+        "win_rate": 0.8333333333333334,
+        "mean_adaptation_time": 3.75,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.9166666666666666,
+        "mean_adaptation_time": 23.5,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 500.3348858356476,
+      "wall_elapsed_s": 512.4121475219727
+    },
+    {
+      "tag": "single200k-gt-off-ep400-sw40-seed2",
+      "arm": "single200k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 2,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-off-ep400-sw40-seed2.pt",
+      "offline": {
+        "win_rate": 0.9166666666666666,
+        "mean_adaptation_time": 14.5,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.5833333333333334,
+        "mean_adaptation_time": 4.666666666666667,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 442.9536578655243,
+      "wall_elapsed_s": 457.7556619644165
+    },
+    {
+      "tag": "single200k-gt-off-ep400-sw40-seed3",
+      "arm": "single200k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 3,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-off-ep400-sw40-seed3.pt",
+      "offline": {
+        "win_rate": 0.9166666666666666,
+        "mean_adaptation_time": 0.08333333333333333,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.8333333333333334,
+        "mean_adaptation_time": 7.333333333333333,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 458.7369885444641,
+      "wall_elapsed_s": 468.1864802837372
+    },
+    {
+      "tag": "single200k-gt-off-ep400-sw40-seed5",
+      "arm": "single200k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 5,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-off-ep400-sw40-seed5.pt",
+      "offline": {
+        "win_rate": 1.0,
+        "mean_adaptation_time": 18.583333333333332,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 0.5833333333333334,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 461.20988273620605,
+      "wall_elapsed_s": 469.9375903606415
+    },
+    {
+      "tag": "single200k-gt-off-ep400-sw40-seed4",
+      "arm": "single200k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 4,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-off-ep400-sw40-seed4.pt",
+      "offline": {
+        "win_rate": 1.0,
+        "mean_adaptation_time": 14.666666666666666,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.6666666666666666,
+        "mean_adaptation_time": 38.0,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 11,
+        "n_censored": 1,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 510.35522747039795,
+      "wall_elapsed_s": 523.847758769989
+    },
+    {
+      "tag": "partitioned-gt-off-ep400-sw40-seed0",
+      "arm": "partitioned",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 0,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-off-ep400-sw40-seed0.pt",
+      "offline": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 2.25,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.5833333333333334,
+        "mean_adaptation_time": 9.666666666666666,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 469.8391077518463,
+      "wall_elapsed_s": 479.0101170539856
+    },
+    {
+      "tag": "partitioned-gt-off-ep400-sw40-seed1",
+      "arm": "partitioned",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 1,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-off-ep400-sw40-seed1.pt",
+      "offline": {
+        "win_rate": 0.8333333333333334,
+        "mean_adaptation_time": 7.333333333333333,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.5,
+        "mean_adaptation_time": 2.25,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 478.4545488357544,
+      "wall_elapsed_s": 488.54446625709534
+    },
+    {
+      "tag": "partitioned-gt-off-ep400-sw40-seed2",
+      "arm": "partitioned",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 2,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-off-ep400-sw40-seed2.pt",
+      "offline": {
+        "win_rate": 0.9166666666666666,
+        "mean_adaptation_time": 15.0,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.9166666666666666,
+        "mean_adaptation_time": 6.083333333333333,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 474.9915533065796,
+      "wall_elapsed_s": 483.36062932014465
+    },
+    {
+      "tag": "partitioned-gt-off-ep400-sw40-seed3",
+      "arm": "partitioned",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 3,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-off-ep400-sw40-seed3.pt",
+      "offline": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 5.583333333333333,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.9166666666666666,
+        "mean_adaptation_time": 4.5,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 469.8627350330353,
+      "wall_elapsed_s": 480.0910527706146
+    },
+    {
+      "tag": "partitioned-gt-off-ep400-sw40-seed4",
+      "arm": "partitioned",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 4,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-off-ep400-sw40-seed4.pt",
+      "offline": {
+        "win_rate": 0.8333333333333334,
+        "mean_adaptation_time": 2.9166666666666665,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 1.8333333333333333,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 465.47486424446106,
+      "wall_elapsed_s": 473.4602403640747
+    },
+    {
+      "tag": "partitioned-gt-off-ep400-sw40-seed5",
+      "arm": "partitioned",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 5,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-off-ep400-sw40-seed5.pt",
+      "offline": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 6.666666666666667,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 5.5,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 461.1862268447876,
+      "wall_elapsed_s": 469.8481636047363
+    },
+    {
+      "tag": "single50k-gt-off-ep400-sw40-seed0",
+      "arm": "single50k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 0,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single50k-gt-off-ep400-sw40-seed0.pt",
+      "offline": {
+        "win_rate": 1.0,
+        "mean_adaptation_time": 7.666666666666667,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.5833333333333334,
+        "mean_adaptation_time": 8.75,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 453.29086685180664,
+      "wall_elapsed_s": 466.4416449069977
+    },
+    {
+      "tag": "single50k-gt-off-ep400-sw40-seed1",
+      "arm": "single50k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 1,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single50k-gt-off-ep400-sw40-seed1.pt",
+      "offline": {
+        "win_rate": 1.0,
+        "mean_adaptation_time": 3.6666666666666665,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.6666666666666666,
+        "mean_adaptation_time": 8.333333333333334,
+        "median_adaptation_time": 1.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 496.61816477775574,
+      "wall_elapsed_s": 509.1630516052246
+    },
+    {
+      "tag": "single50k-gt-off-ep400-sw40-seed2",
+      "arm": "single50k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 2,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single50k-gt-off-ep400-sw40-seed2.pt",
+      "offline": {
+        "win_rate": 1.0,
+        "mean_adaptation_time": 0.75,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 9.666666666666666,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 449.26506996154785,
+      "wall_elapsed_s": 459.45582842826843
+    },
+    {
+      "tag": "single50k-gt-off-ep400-sw40-seed3",
+      "arm": "single50k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 3,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single50k-gt-off-ep400-sw40-seed3.pt",
+      "offline": {
+        "win_rate": 0.8333333333333334,
+        "mean_adaptation_time": 11.916666666666666,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.6666666666666666,
+        "mean_adaptation_time": 11.166666666666666,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 457.8973665237427,
+      "wall_elapsed_s": 467.47432231903076
+    },
+    {
+      "tag": "single50k-gt-off-ep400-sw40-seed4",
+      "arm": "single50k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 4,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single50k-gt-off-ep400-sw40-seed4.pt",
+      "offline": {
+        "win_rate": 1.0,
+        "mean_adaptation_time": 7.833333333333333,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.4166666666666667,
+        "mean_adaptation_time": 35.083333333333336,
+        "median_adaptation_time": 0.5,
+        "n_adapt_included": 12,
+        "n_ok": 11,
+        "n_censored": 1,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 506.2925457954407,
+      "wall_elapsed_s": 521.7616243362427
+    },
+    {
+      "tag": "single50k-gt-off-ep400-sw40-seed5",
+      "arm": "single50k",
+      "cond": "off",
+      "label_source": "groundtruth",
+      "seed": 5,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single50k-gt-off-ep400-sw40-seed5.pt",
+      "offline": {
+        "win_rate": 0.6666666666666666,
+        "mean_adaptation_time": 11.636363636363637,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 11,
+        "n_ok": 11,
+        "n_censored": 0,
+        "n_no_post": 1,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.8333333333333334,
+        "mean_adaptation_time": 12.083333333333334,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 460.4730954170227,
+      "wall_elapsed_s": 468.48441100120544
+    },
+    {
+      "tag": "single200k-gt-on-ep400-sw40-seed0",
+      "arm": "single200k",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 0,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-on-ep400-sw40-seed0.pt",
+      "offline": {
+        "win_rate": 0.8333333333333334,
+        "mean_adaptation_time": 33.166666666666664,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.9166666666666666,
+        "mean_adaptation_time": 12.75,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 433.6265335083008,
+      "wall_elapsed_s": 442.0672285556793
+    },
+    {
+      "tag": "single200k-gt-on-ep400-sw40-seed1",
+      "arm": "single200k",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 1,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-on-ep400-sw40-seed1.pt",
+      "offline": {
+        "win_rate": 0.9166666666666666,
+        "mean_adaptation_time": 1.25,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 0.25,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 465.90945768356323,
+      "wall_elapsed_s": 476.27509903907776
+    },
+    {
+      "tag": "single200k-gt-on-ep400-sw40-seed3",
+      "arm": "single200k",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 3,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-on-ep400-sw40-seed3.pt",
+      "offline": {
+        "win_rate": 0.8333333333333334,
+        "mean_adaptation_time": 16.5,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.6666666666666666,
+        "mean_adaptation_time": 13.0,
+        "median_adaptation_time": 3.5,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 475.7561161518097,
+      "wall_elapsed_s": 486.99970602989197
+    },
+    {
+      "tag": "single200k-gt-on-ep400-sw40-seed4",
+      "arm": "single200k",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 4,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-on-ep400-sw40-seed4.pt",
+      "offline": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 7.416666666666667,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.08333333333333333,
+        "mean_adaptation_time": 3.75,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 521.2411019802094,
+      "wall_elapsed_s": 539.479465007782
+    },
+    {
+      "tag": "single200k-gt-on-ep400-sw40-seed2",
+      "arm": "single200k",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 2,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-on-ep400-sw40-seed2.pt",
+      "offline": {
+        "win_rate": 0.08333333333333333,
+        "mean_adaptation_time": 0.6666666666666666,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.0,
+        "mean_adaptation_time": 39.166666666666664,
+        "median_adaptation_time": 0.5,
+        "n_adapt_included": 12,
+        "n_ok": 11,
+        "n_censored": 1,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 1044.715901851654,
+      "wall_elapsed_s": 1066.6527001857758
+    },
+    {
+      "tag": "partitioned-gt-on-ep400-sw40-seed0",
+      "arm": "partitioned",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 0,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-on-ep400-sw40-seed0.pt",
+      "offline": {
+        "win_rate": 0.9166666666666666,
+        "mean_adaptation_time": 6.416666666666667,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 1.0,
+        "mean_adaptation_time": 22.166666666666668,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 454.57814145088196,
+      "wall_elapsed_s": 464.5655505657196
+    },
+    {
+      "tag": "single200k-gt-on-ep400-sw40-seed5",
+      "arm": "single200k",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 5,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-on-ep400-sw40-seed5.pt",
+      "offline": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 24.75,
+        "median_adaptation_time": 1.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 34.333333333333336,
+        "median_adaptation_time": 4.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 517.6483995914459,
+      "wall_elapsed_s": 525.6731083393097
+    },
+    {
+      "tag": "partitioned-gt-on-ep400-sw40-seed1",
+      "arm": "partitioned",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 1,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-on-ep400-sw40-seed1.pt",
+      "offline": {
+        "win_rate": 0.8333333333333334,
+        "mean_adaptation_time": 13.083333333333334,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 2.4166666666666665,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 477.5021815299988,
+      "wall_elapsed_s": 486.3373146057129
+    },
+    {
+      "tag": "partitioned-gt-on-ep400-sw40-seed2",
+      "arm": "partitioned",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 2,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-on-ep400-sw40-seed2.pt",
+      "offline": {
+        "win_rate": 0.6666666666666666,
+        "mean_adaptation_time": 25.75,
+        "median_adaptation_time": 5.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.5833333333333334,
+        "mean_adaptation_time": 1.0,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 474.41406989097595,
+      "wall_elapsed_s": 486.99324655532837
+    },
+    {
+      "tag": "partitioned-gt-on-ep400-sw40-seed3",
+      "arm": "partitioned",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 3,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-on-ep400-sw40-seed3.pt",
+      "offline": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 16.083333333333332,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 43.166666666666664,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 11,
+        "n_censored": 1,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 490.8490481376648,
+      "wall_elapsed_s": 501.7699511051178
+    },
+    {
+      "tag": "partitioned-gt-on-ep400-sw40-seed4",
+      "arm": "partitioned",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 4,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-on-ep400-sw40-seed4.pt",
+      "offline": {
+        "win_rate": 0.9166666666666666,
+        "mean_adaptation_time": 26.0,
+        "median_adaptation_time": 0.5,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 9.75,
+        "median_adaptation_time": 0.5,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 474.2392888069153,
+      "wall_elapsed_s": 484.0585734844208
+    },
+    {
+      "tag": "single50k-gt-on-ep400-sw40-seed0",
+      "arm": "single50k",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 0,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single50k-gt-on-ep400-sw40-seed0.pt",
+      "offline": {
+        "win_rate": 0.8333333333333334,
+        "mean_adaptation_time": 13.0,
+        "median_adaptation_time": 1.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 1.0,
+        "mean_adaptation_time": 9.0,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 432.87092757225037,
+      "wall_elapsed_s": 440.58577394485474
+    },
+    {
+      "tag": "partitioned-gt-on-ep400-sw40-seed5",
+      "arm": "partitioned",
+      "cond": "on",
+      "label_source": "groundtruth",
+      "seed": 5,
+      "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\partitioned-gt-on-ep400-sw40-seed5.pt",
+      "offline": {
+        "win_rate": 0.75,
+        "mean_adaptation_time": 2.0833333333333335,
+        "median_adaptation_time": 0.0,
+        "n_adapt_included": 12,
+        "n_ok": 12,
+        "n_censored": 0,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "online": {
+        "win_rate": 0.0,
+        "mean_adaptation_time": 66.25,
+        "median_adaptation_time": 2.0,
+        "n_adapt_included": 12,
+        "n_ok": 10,
+        "n_censored": 2,
+        "n_no_post": 0,
+        "n_short_base": 0
+      },
+      "train_elapsed_s": 493.07317662239075,
+      "wall_elapsed_s": 507.9573838710785
+    }
+  ]
+}

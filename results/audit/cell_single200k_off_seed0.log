@@ -1,0 +1,74 @@
+seeded 11335 expert transitions
+ep   0 aggressive reward=  122.8 caught=0 steps= 400 q=1.13
+ep  10 evasive   reward=  636.0 caught=0 steps= 400 q=37.68
+ep  20 aggressive reward=  199.1 caught=0 steps= 400 q=61.41
+ep  30 evasive   reward=  847.0 caught=1 steps= 210 q=79.78
+ep  40 aggressive reward=  817.0 caught=1 steps= 229 q=96.55
+ep  50 evasive   reward=  765.0 caught=1 steps= 156 q=109.33
+ep  60 aggressive reward=  767.7 caught=1 steps= 254 q=121.46
+ep  70 evasive   reward=  784.6 caught=1 steps= 161 q=132.67
+ep  80 aggressive reward=  736.5 caught=1 steps= 172 q=144.59
+ep  90 evasive   reward=  731.0 caught=1 steps= 147 q=155.85
+ep 100 aggressive reward=  725.8 caught=1 steps= 133 q=166.44
+ep 110 evasive   reward=  763.1 caught=1 steps= 161 q=177.82
+ep 120 aggressive reward=  762.3 caught=1 steps= 129 q=187.95
+ep 130 evasive   reward=  754.2 caught=1 steps= 139 q=200.37
+ep 140 aggressive reward=  764.3 caught=1 steps= 121 q=209.37
+ep 150 evasive   reward=  750.1 caught=1 steps= 139 q=218.85
+ep 160 aggressive reward=  676.3 caught=1 steps= 123 q=227.85
+ep 170 evasive   reward=  773.1 caught=1 steps= 166 q=238.23
+ep 180 aggressive reward=  786.2 caught=1 steps= 165 q=248.43
+ep 190 evasive   reward=  769.2 caught=1 steps= 146 q=256.14
+ep 200 aggressive reward=  760.5 caught=1 steps= 118 q=268.76
+ep 210 evasive   reward=  764.0 caught=1 steps= 152 q=276.37
+ep 220 aggressive reward=  759.9 caught=1 steps= 123 q=284.0
+ep 230 evasive   reward=  782.3 caught=1 steps= 169 q=294.44
+ep 240 aggressive reward=  743.9 caught=1 steps= 138 q=303.45
+ep 250 evasive   reward=  738.2 caught=1 steps= 145 q=312.37
+ep 260 aggressive reward=  715.6 caught=1 steps= 118 q=319.3
+ep 270 evasive   reward=  780.0 caught=1 steps= 147 q=326.96
+ep 280 aggressive reward=  767.2 caught=1 steps= 117 q=336.95
+ep 290 evasive   reward=  771.4 caught=1 steps= 132 q=343.57
+ep 300 aggressive reward=  710.5 caught=1 steps= 128 q=352.02
+ep 310 evasive   reward=  787.1 caught=1 steps= 121 q=362.06
+ep 320 aggressive reward=  729.5 caught=1 steps= 133 q=368.82
+ep 330 evasive   reward=  735.6 caught=1 steps= 135 q=377.41
+ep 340 aggressive reward=  747.2 caught=1 steps= 139 q=385.63
+ep 350 evasive   reward=  779.4 caught=1 steps= 134 q=393.67
+ep 360 aggressive reward=  730.7 caught=1 steps= 138 q=400.94
+ep 370 evasive   reward=  784.1 caught=1 steps= 132 q=409.6
+ep 380 aggressive reward=  768.5 caught=1 steps= 127 q=417.07
+ep 390 evasive   reward=  777.1 caught=1 steps= 156 q=425.35
+ep 399 balanced  reward=  308.6 caught=0 steps= 130 q=434.33
+train done (388.0s) -> D:\IEEE\project3\data\audit\checkpoints\single200k-gt-off-ep400-sw40-seed0.pt
+[single200k-gt-off-ep400-sw40-seed0 offline] win=0.917 adapt=8.416666666666666 included=12/12 (no-post=0, short-base=0, censored=0)
+[single200k-gt-off-ep400-sw40-seed0 online] win=0.917 adapt=8.416666666666666 included=12/12 (no-post=0, short-base=0, censored=0)
+{
+  "tag": "single200k-gt-off-ep400-sw40-seed0",
+  "arm": "single200k",
+  "cond": "off",
+  "label_source": "groundtruth",
+  "seed": 0,
+  "checkpoint": "D:\\IEEE\\project3\\data\\audit\\checkpoints\\single200k-gt-off-ep400-sw40-seed0.pt",
+  "offline": {
+    "win_rate": 0.9166666666666666,
+    "mean_adaptation_time": 8.416666666666666,
+    "median_adaptation_time": 0.0,
+    "n_adapt_included": 12,
+    "n_ok": 12,
+    "n_censored": 0,
+    "n_no_post": 0,
+    "n_short_base": 0
+  },
+  "online": {
+    "win_rate": 0.9166666666666666,
+    "mean_adaptation_time": 8.416666666666666,
+    "median_adaptation_time": 0.0,
+    "n_adapt_included": 12,
+    "n_ok": 12,
+    "n_censored": 0,
+    "n_no_post": 0,
+    "n_short_base": 0
+  },
+  "train_elapsed_s": 387.9204180240631
+}
